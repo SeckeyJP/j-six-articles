@@ -3,7 +3,7 @@ title: "【J-SIX#4】CLAUDE.md 実践ガイド — AI開発の「プロジェク
 emoji: "📜"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: true
+published: false
 published_at: 2026-04-02 09:00
 ---
 

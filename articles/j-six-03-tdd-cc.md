@@ -3,7 +3,7 @@ title: "【J-SIX#3】TDD × Claude Code — 自律実行で生産性を最大化
 emoji: "🧪"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: true
+published: false
 published_at: 2026-04-01 09:00
 ---
 
