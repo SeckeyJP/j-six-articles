@@ -1,0 +1,13 @@
+{
+  "name": "j-six-articles",
+  "version": "1.0.0",
+  "description": "J-SIX プロジェクトの Qiita / Zenn 記事管理",
+  "scripts": {
+    "preview": "zenn preview",
+    "new:article": "zenn new:article"
+  },
+  "dependencies": {
+    "zenn-cli": "^0.1.0"
+  },
+  "private": true
+}
