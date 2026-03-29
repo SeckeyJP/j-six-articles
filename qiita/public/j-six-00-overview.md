@@ -1,5 +1,5 @@
 ---
-title: J-SIX — Claude Code で日本のSI開発プロセスを再定義する
+title: 【J-SIX#0】J-SIX — Claude Code で日本のSI開発プロセスを再定義する
 tags:
   - SI
   - ClaudeCode
