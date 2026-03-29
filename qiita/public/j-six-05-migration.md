@@ -1,15 +1,16 @@
 ---
 title: 【J-SIX#5】V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-03-29T16:15:15.266Z'
-id: null
+private: false
+updated_at: '2026-03-30T01:15:22+09:00'
+id: aa0c208ec5f729834bd1
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note
