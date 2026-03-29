@@ -1,16 +1,15 @@
 ---
 title: J-SIX — Claude Code で日本のSI開発プロセスを再定義する
-tags:
-  - SI
-  - ClaudeCode
-  - j-six
-  - ai-development
 private: false
+tags:
+  - j-six
+  - claudecode
+  - ai-development
+  - si
 updated_at: '2026-03-30T00:23:02+09:00'
 id: 323f55b7a7939951acf3
 organization_url_name: null
 slide: false
-ignorePublish: false
 ---
 
 :::note
@@ -93,12 +92,6 @@ block-beta
   D2["CCが記録\n(人間承認)"]:1
   D3["CCが自動生成"]:1
 
-  style L1 fill:#e3f2fd,stroke:#1976D2
-  style L2 fill:#fff8e1,stroke:#FFA000
-  style L3 fill:#e8f5e9,stroke:#388E3C
-  style D1 fill:#e3f2fd,stroke:#1976D2
-  style D2 fill:#fff8e1,stroke:#FFA000
-  style D3 fill:#e8f5e9,stroke:#388E3C
 ```
 
 - **第1層：Spec** — 業務背景・目的・制約（Why Business）
@@ -136,8 +129,6 @@ flowchart TB
 
   P3 -->|"🚪 タスク承認"| P4
 
-  style Human fill:#e8f4fd,stroke:#2196F3
-  style Auto fill:#fff3e0,stroke:#FF9800
 ```
 
 **最大のパラダイムシフトは Phase 6** です。設計書を事前に書くのではなく、実装後にコードから逆生成します。コードが Source of Truth なので、設計書との乖離が原理的にゼロになります。
@@ -160,9 +151,6 @@ flowchart TB
   S3["Stage 3: J-SIX全面適用（6ヶ月〜）"]
   S1 -->|"効果確認"| S2 -->|"品質比較OK"| S3
 
-  style S1 fill:#e8f5e9,stroke:#4CAF50
-  style S2 fill:#fff3e0,stroke:#FF9800
-  style S3 fill:#e3f2fd,stroke:#2196F3
 ```
 
 ### Stage 1: V字 + CC 補助（3ヶ月）
