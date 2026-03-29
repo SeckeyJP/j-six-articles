@@ -1,16 +1,16 @@
 ---
 title: 【J-SIX#4】CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く
-published_at: '2026-04-02 09:00'
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-03-29T16:44:47.832Z'
-id: null
+private: false
+updated_at: '2026-03-30T01:44:55+09:00'
+id: d267f1c523eb95b2c9b5
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note
