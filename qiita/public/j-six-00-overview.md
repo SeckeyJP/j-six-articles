@@ -1,13 +1,13 @@
 ---
 title: 【J-SIX#0】J-SIX — Claude Code で日本のSI開発プロセスを再定義する
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
 private: false
-updated_at: '2026-03-30T01:46:22+09:00'
-id: null
+updated_at: '2026-03-30T01:46:54+09:00'
+id: e4726bbbbf4d7949ab0f
 organization_url_name: null
 slide: false
 ignorePublish: false
