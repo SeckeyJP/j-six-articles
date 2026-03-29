@@ -1,15 +1,16 @@
 ---
 title: 【J-SIX#1】V字モデルの前提崩壊と SDD の台頭
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-03-30T01:44:55+09:00'
+private: false
+updated_at: '2026-03-30T01:51:59+09:00'
 id: f23360f42ee385bd9213
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note
