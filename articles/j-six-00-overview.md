@@ -1,5 +1,5 @@
 ---
-title: "J-SIX — Claude Code で日本のSI開発プロセスを再定義する"
+title: "【J-SIX#0】J-SIX — Claude Code で日本のSI開発プロセスを再定義する"
 emoji: "🔄"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
@@ -77,12 +77,12 @@ BMAD 等の外部フレームワークに依存せず、CC のネイティブ機
 ```mermaid
 block-beta
   columns 3
-  L1["第1層: Spec\nWhy Business\n業務背景・目的・制約"]:1
-  L2["第2層: ADR\nWhy Technical / Why Not\n設計判断と却下理由"]:1
-  L3["第3層: 逆生成設計書\nWhat / How\nコードから自動生成"]:1
+  L1["第1層: Spec<br>Why Business<br>業務背景・目的・制約"]:1
+  L2["第2層: ADR<br>Why Technical / Why Not<br>設計判断と却下理由"]:1
+  L3["第3層: 逆生成設計書<br>What / How<br>コードから自動生成"]:1
   space:3
-  D1["人間が書く\n(CC支援)"]:1
-  D2["CCが記録\n(人間承認)"]:1
+  D1["人間が書く<br>(CC支援)"]:1
+  D2["CCが記録<br>(人間承認)"]:1
   D3["CCが自動生成"]:1
 
 ```
@@ -213,11 +213,11 @@ J-SIX は日本のSI開発プロセスを「捨てる」のではなく「進化
 | # | タイトル | 状態 |
 |---|---|---|
 | **#0** | **本記事（概要編）** | ✅ |
-| #1 | [V字モデルの前提崩壊と SDD の台頭](/sekitahiroto/articles/j-six-01-sdd) | 近日公開 |
-| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](/sekitahiroto/articles/j-six-02-3layer-doc) | 近日公開 |
-| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](/sekitahiroto/articles/j-six-03-tdd-cc) | 近日公開 |
-| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](/sekitahiroto/articles/j-six-04-claude-md) | 近日公開 |
-| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](/sekitahiroto/articles/j-six-05-migration) | 近日公開 |
+| #1 | [V字モデルの前提崩壊と SDD の台頭](/seckeyjp/articles/j-six-01-sdd) | 公開済 |
+| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](/seckeyjp/articles/j-six-02-3layer-doc) | 公開済 |
+| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](/seckeyjp/articles/j-six-03-tdd-cc) | 公開済 |
+| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](/seckeyjp/articles/j-six-04-claude-md) | 公開済 |
+| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](/seckeyjp/articles/j-six-05-migration) | 公開済 |
 
 ## 参考文献・リンク
 
