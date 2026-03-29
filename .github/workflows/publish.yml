@@ -24,6 +24,6 @@ jobs:
           fetch-depth: 0
 
       - name: Run zenn-qiita-sync
-        uses: C-Naoki/zenn-qiita-sync@main
+        uses: C-Naoki/zenn-qiita-sync@v1
         with:
           qiita-token: ${{ secrets.QIITA_TOKEN }}
