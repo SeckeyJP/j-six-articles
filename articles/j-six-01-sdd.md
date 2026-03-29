@@ -3,7 +3,7 @@ title: "【J-SIX#1】V字モデルの前提崩壊と SDD の台頭"
 emoji: "⚡"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: false
+published: true
 ---
 
 :::message
