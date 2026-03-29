@@ -7,7 +7,7 @@ published: true
 ---
 
 :::message
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の #1 です。[#0 概要編](/seckeyjp/articles/j-six-00-overview)で全体像を把握してからお読みください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の #1 です。[#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)で全体像を把握してからお読みください。
 :::
 
 ## はじめに
@@ -290,9 +290,9 @@ J-SIX のプロセス定義、CLAUDE.md テンプレート、Skills などの一
 
 | # | タイトル | 状態 |
 |---|---|---|
-| #0 | [J-SIX 概論 — なぜ今、日本のSI開発プロセスを再設計するのか](/seckeyjp/articles/j-six-00-overview) | 公開済 |
+| #0 | [J-SIX 概論 — なぜ今、日本のSI開発プロセスを再設計するのか](https://zenn.dev/seckeyjp/articles/j-six-00-overview) | 公開済 |
 | **#1** | **本記事（V字モデルの前提崩壊と SDD の台頭）** | ✅ |
-| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](/seckeyjp/articles/j-six-02-3layer-doc) | 公開済 |
-| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](/seckeyjp/articles/j-six-03-tdd-cc) | 公開済 |
-| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](/seckeyjp/articles/j-six-04-claude-md) | 公開済 |
-| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](/seckeyjp/articles/j-six-05-migration) | 公開済 |
+| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc) | 公開済 |
+| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) | 公開済 |
+| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://zenn.dev/seckeyjp/articles/j-six-04-claude-md) | 公開済 |
+| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](https://zenn.dev/seckeyjp/articles/j-six-05-migration) | 公開済 |
