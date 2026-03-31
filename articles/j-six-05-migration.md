@@ -4,7 +4,7 @@ emoji: "🗺️"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
 published: true
-published_at: 2026-04-03 09:00
+published_at: 2026-04-01 12:00
 ---
 
 :::message
