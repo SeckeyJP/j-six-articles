@@ -1,16 +1,15 @@
 ---
 title: 【J-SIX#3】TDD × Claude Code — 自律実行で生産性を最大化する
-tags:
-  - SI
-  - ClaudeCode
-  - j-six
-  - ai-development
 private: false
+tags:
+  - j-six
+  - claudecode
+  - ai-development
+  - si
 updated_at: '2026-03-30T01:52:00+09:00'
 id: a9dc743a14977686adbf
 organization_url_name: null
 slide: false
-ignorePublish: false
 ---
 
 :::note
