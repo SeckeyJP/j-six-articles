@@ -25,7 +25,7 @@ for f in "$QIITA_DIR"/j-six-*.md; do
     zenn_url="https://zenn.dev/seckeyjp/articles/$slug"
     qiita_url="https://qiita.com/$QIITA_USER/items/$id"
     if grep -q "$zenn_url" "$f"; then
-      sed -i'' -e "s|$zenn_url|$qiita_url|g" "$f"
+      sed -i "s|$zenn_url|$qiita_url|g" "$f"
       changed=1
     fi
   done < "$MAPFILE"
