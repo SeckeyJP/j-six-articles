@@ -27,3 +27,22 @@ jobs:
         uses: C-Naoki/zenn-qiita-sync@v1.0.0
         with:
           qiita-token: ${{ secrets.QIITA_TOKEN }}
+
+      - name: Replace Zenn links with Qiita links
+        run: bash scripts/replace-qiita-links.sh
+
+      - name: Publish updated Qiita articles
+        run: |
+          if git diff --quiet qiita/public/; then
+            echo "No link changes to publish"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add qiita/public/
+            git commit -m "Replace Zenn links with Qiita links"
+            git push
+            npm install -g @qiita/qiita-cli@v1.8.0
+            qiita publish --all --root ./qiita
+          fi
+        env:
+          QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
