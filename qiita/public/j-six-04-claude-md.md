@@ -6,7 +6,7 @@ tags:
   - j-six
   - ai-development
 private: false
-updated_at: '2026-04-02T01:23:12+09:00'
+updated_at: '2026-04-02T01:49:56+09:00'
 id: d267f1c523eb95b2c9b5
 organization_url_name: null
 slide: false

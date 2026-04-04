@@ -1,15 +1,16 @@
 ---
 title: Agent Teams 実践ガイド — 複数の Claude Code でプロジェクトを並列開発する
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-04-04T16:28:47.377Z'
-id: null
+private: false
+updated_at: '2026-04-05T01:28:55+09:00'
+id: 2639ae22b85e04a98c9c
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note
