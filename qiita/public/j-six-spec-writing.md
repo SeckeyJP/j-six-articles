@@ -1,15 +1,16 @@
 ---
 title: AI が実装できる Spec の書き方 — 曖昧な仕様書が生むバグを防ぐ
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-04-04T16:46:05.415Z'
-id: null
+private: false
+updated_at: '2026-04-05T01:46:13+09:00'
+id: cdf7cb7a68596d84e66b
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note

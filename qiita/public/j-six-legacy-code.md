@@ -1,15 +1,16 @@
 ---
 title: レガシーコード × Claude Code — 特性化テストで安全に改修する
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-04-04T16:46:04.400Z'
-id: null
+private: false
+updated_at: '2026-04-05T01:46:12+09:00'
+id: 5bddfb900b58c0154599
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note

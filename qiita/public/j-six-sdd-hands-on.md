@@ -1,15 +1,16 @@
 ---
 title: SDD 実践入門 — Spec 1枚から Claude Code で API を作る
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-04-04T16:46:04.906Z'
-id: null
+private: false
+updated_at: '2026-04-05T01:46:12+09:00'
+id: 4ed3b4a4d8b3c9d29ab2
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note
