@@ -71,14 +71,30 @@ push すると GitHub Actions が Zenn / Qiita に自動公開します。
 
 ## 記事一覧
 
+### シリーズ（6本）
+
 | # | slug | タイトル | 状態 |
 |---|---|---|---|
-| #0 | j-six-00-overview | J-SIX 概論 | 下書き |
-| #1 | j-six-01-sdd | V字モデルの前提崩壊と SDD の台頭 | 予定 |
-| #2 | j-six-02-3layer-doc | 3層ドキュメント戦略 | 予定 |
-| #3 | j-six-03-tdd-cc | TDD × Claude Code | 予定 |
-| #4 | j-six-04-claude-md | CLAUDE.md 実践ガイド | 予定 |
-| #5 | j-six-05-migration | V字モデルからの段階的移行 | 予定 |
+| #0 | j-six-00-overview | J-SIX 概論 | 公開済 |
+| #1 | j-six-01-sdd | V字モデルの前提崩壊と SDD の台頭 | 公開済 |
+| #2 | j-six-02-3layer-doc | 3層ドキュメント戦略 | 公開済 |
+| #3 | j-six-03-tdd-cc | TDD × Claude Code | 公開済 |
+| #4 | j-six-04-claude-md | CLAUDE.md 実践ガイド | 公開済 |
+| #5 | j-six-05-migration | V字モデルからの段階的移行 | 公開済 |
+
+### 番外編（9本）
+
+| slug | タイトル | 状態 |
+|---|---|---|
+| j-six-tdd-antipatterns | TDD × AI の10のアンチパターン | 公開済 |
+| j-six-agent-teams | Agent Teams 実践ガイド | 公開済 |
+| j-six-sdd-hands-on | SDD 実践入門 | 公開済 |
+| j-six-hooks-guide | CC Hooks 実践ガイド | 公開済 |
+| j-six-spec-writing | AI が実装できる Spec の書き方 | 公開済 |
+| j-six-legacy-code | レガシーコード × Claude Code | 公開済 |
+| j-six-code-review | CC Code Review 活用ガイド | 公開済 |
+| j-six-doc-reverse-gen | 設計書逆生成の実装 — Phase 6 | 公開済 |
+| j-six-scheduled-tasks | CC Scheduled Tasks | 公開済 |
 
 ## 関連リポジトリ
 
