@@ -1,15 +1,16 @@
 ---
 title: CC Scheduled Tasks — Claude Code を定期実行して開発を自動化する
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-04-18T08:59:00.879Z'
-id: null
+private: false
+updated_at: '2026-04-18T17:59:09+09:00'
+id: 03c892ece3be2b310794
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 :::note
