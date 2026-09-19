@@ -1,18 +1,15 @@
 ---
 title: 【J-SIX#0】J-SIX — Claude Code で日本のSI開発プロセスを再定義する
-tags:
-  - SI
-  - ClaudeCode
-  - j-six
-  - ai-development
 private: false
+tags:
+  - j-six
+  - claudecode
+  - ai-development
+  - si
 updated_at: '2026-09-20T00:02:05+09:00'
 id: e4726bbbbf4d7949ab0f
 organization_url_name: null
 slide: false
-ignorePublish: false
-posting_campaign_uuid: null
-agreed_posting_campaign_term: false
 ---
 
 :::note
@@ -221,18 +218,18 @@ J-SIX は日本のSI開発プロセスを「捨てる」のではなく「進化
 - **段階的に移行できる。** 既存案件を止めずに3ステージで移行
 - **期待効果は大きい。** 実装工数 60-70%削減（著者推定目標値）
 
-このプロセスは著者のオリジナル設計ですが、世界標準のSDD原則と、Anthropic・CodeRabbit等の公開データに基づいています。期待効果の数値は推定であり、実プロジェクトでの検証はこれからの課題です。
+このプロセスは著者のオリジナル設計ですが、世界標準のSDD原則と、Anthropic・CodeRabbit等の公開データに基づいています。期待効果の数値は推定であり、実プロジェクトでの検証はこれからの課題です。小規模な題材でのケーススタディは GitHub で公開しています（カバレッジ 99% のコードの mutation score が 91.8% だった、等の実測）[^case-studies]。一方、工数削減率を実測するための「人手のみの実装」との比較は、協力者と題材を確保できず見送っており、工数削減率は推定のままです。
 
 ## シリーズ記事
 
 | # | タイトル | 状態 |
 |---|---|---|
 | **#0** | **本記事（概要編）** | ✅ |
-| #1 | [V字モデルの前提崩壊と SDD の台頭](https://qiita.com/SeckeyJP/items/f23360f42ee385bd9213) | 公開済 |
-| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](https://qiita.com/SeckeyJP/items/8f413ed405ae0398f94c) | 公開済 |
-| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://qiita.com/SeckeyJP/items/a9dc743a14977686adbf) | 公開済 |
-| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://qiita.com/SeckeyJP/items/d267f1c523eb95b2c9b5) | 公開済 |
-| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](https://qiita.com/SeckeyJP/items/8fe3905cf5a3520cfd8a) | 公開済 |
+| #1 | [V字モデルの前提崩壊と SDD の台頭](https://zenn.dev/seckeyjp/articles/j-six-01-sdd) | 公開済 |
+| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc) | 公開済 |
+| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) | 公開済 |
+| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://zenn.dev/seckeyjp/articles/j-six-04-claude-md) | 公開済 |
+| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](https://zenn.dev/seckeyjp/articles/j-six-05-migration) | 公開済 |
 
 ## 参考文献・リンク
 
@@ -246,6 +243,7 @@ https://github.com/SeckeyJP/j-six
 [^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^sonnet45]: Anthropic. "Introducing Claude Sonnet 4.5" (2025.09). https://www.anthropic.com/news/claude-sonnet-4-5
 [^cgi-sdd]: CGI. "Spec-driven development: From vibe coding to intent engineering" (2026.03). https://www.cgi.com/en/blog/artificial-intelligence/spec-driven-development
+[^case-studies]: J-SIX. ケーススタディ #1（申請承認ワークフロー）・#2（mutation score の実測）. https://github.com/SeckeyJP/j-six/tree/main/docs
 
 ### CC ベストプラクティス
 

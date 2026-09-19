@@ -1,22 +1,19 @@
 ---
 title: 【J-SIX#5】V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ
-tags:
-  - SI
-  - ClaudeCode
-  - j-six
-  - ai-development
 private: false
+tags:
+  - j-six
+  - claudecode
+  - ai-development
+  - si
 updated_at: '2026-04-02T01:49:56+09:00'
 id: 8fe3905cf5a3520cfd8a
 organization_url_name: null
 slide: false
-ignorePublish: false
-posting_campaign_uuid: null
-agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の #5（最終回）です。[#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f)で全体像を把握してからお読みください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の #5（最終回）です。[#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)で全体像を把握してからお読みください。
 :::
 
 ## はじめに — 「ビッグバン移行」はしない
@@ -324,7 +321,7 @@ J-SIX への移行は、V字モデルを「捨てる」ことではありませ�
 - **レガシーコードにも適用できる**。「島を作る」戦略で段階的に対応
 - **壁は技術だけではない**。組織・顧客の壁にも計画的に対処する
 
-J-SIX は著者のオリジナル設計であり、提示した工数削減率や ROI は推定目標値です。大規模な実証データはまだありません。しかし、Stage 1 のリスクの小ささを考えれば、「まず試してみる」のハードルは低いはずです。
+J-SIX は著者のオリジナル設計であり、提示した工数削減率や ROI は推定目標値です。大規模な実証データはまだありません。小規模な題材でのケーススタディは GitHub で公開しています（カバレッジ 99% のコードの mutation score が 91.8% だった、等の実測）[^case-studies]。一方、工数削減率を実測するための「人手のみの実装」との比較は、協力者と題材を確保できず見送っており、工数削減率は推定のままです。しかし、Stage 1 のリスクの小ささを考えれば、「まず試してみる」のハードルは低いはずです。
 
 本シリーズが、日本の SI 開発の進化を考えるきっかけになれば幸いです。
 
@@ -332,11 +329,11 @@ J-SIX は著者のオリジナル設計であり、提示した工数削減率�
 
 | # | タイトル | 状態 |
 |---|---|---|
-| #0 | [J-SIX 概論 — なぜ今、日本のSI開発プロセスを再設計するのか](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f) | 公開済 |
-| #1 | [V字モデルの前提崩壊と SDD の台頭](https://qiita.com/SeckeyJP/items/f23360f42ee385bd9213) | 公開済 |
-| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](https://qiita.com/SeckeyJP/items/8f413ed405ae0398f94c) | 公開済 |
-| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://qiita.com/SeckeyJP/items/a9dc743a14977686adbf) | 公開済 |
-| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://qiita.com/SeckeyJP/items/d267f1c523eb95b2c9b5) | 公開済 |
+| #0 | [J-SIX 概論 — なぜ今、日本のSI開発プロセスを再設計するのか](https://zenn.dev/seckeyjp/articles/j-six-00-overview) | 公開済 |
+| #1 | [V字モデルの前提崩壊と SDD の台頭](https://zenn.dev/seckeyjp/articles/j-six-01-sdd) | 公開済 |
+| #2 | [3層ドキュメント戦略 — 設計書は「逆生成」の時代へ](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc) | 公開済 |
+| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) | 公開済 |
+| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://zenn.dev/seckeyjp/articles/j-six-04-claude-md) | 公開済 |
 | **#5** | **本記事（段階的移行）** | ✅ |
 
 ## 参考文献・リンク
@@ -352,3 +349,4 @@ https://github.com/SeckeyJP/j-six
 [^anthropic-enterprise]: Anthropic. "Claude Code and new admin controls for business plans". https://www.anthropic.com/news/claude-code-on-team-and-enterprise
 [^feathers]: Michael Feathers. "Working Effectively with Legacy Code" (2004). 特性化テスト、レガシーコード改善手法の原典
 [^fowler-strangler]: Martin Fowler. "StranglerFigApplication". https://martinfowler.com/bliki/StranglerFigApplication.html
+[^case-studies]: J-SIX. ケーススタディ #1（申請承認ワークフロー）・#2（mutation score の実測）. https://github.com/SeckeyJP/j-six/tree/main/docs
