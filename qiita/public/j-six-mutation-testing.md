@@ -1,15 +1,18 @@
 ---
 title: カバレッジ 99% のテストに mutation testing をかけたら、監査ログの穴が見つかった
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-09-19T15:29:56.548Z'
-id: null
+  - SI
+private: false
+updated_at: '2026-09-20T00:30:06+09:00'
+id: b136d6d0bb2d830fb508
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
