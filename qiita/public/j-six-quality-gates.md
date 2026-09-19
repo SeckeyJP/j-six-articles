@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の番外編です。シリーズ全体の概要は [#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)、TDD の基本プロセスは [#3 TDD × Claude Code](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) をご覧ください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の番外編です。シリーズ全体の概要は [#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f)、TDD の基本プロセスは [#3 TDD × Claude Code](https://qiita.com/SeckeyJP/items/a9dc743a14977686adbf) をご覧ください。
 :::
 
 ## はじめに
@@ -39,7 +39,7 @@ SpecBench は、コーディングエージェントに長い開発タスクを�
 
 これが reward hacking（報酬ハッキング）です。エージェントに悪意があるわけではありません。「テストを通せ」と言われたので、テストを通したのです。
 
-「ではカバレッジを上げればよい」とはなりません。カバレッジはテストが**実行した**行を数えるだけで、テストが誤りを**検出できるか**は測らないからです。カバレッジ 99% のコードに mutation testing をかけたら、監査ログの穴が見つかった実測は[別の記事](https://zenn.dev/seckeyjp/articles/j-six-mutation-testing)にまとめました。
+「ではカバレッジを上げればよい」とはなりません。カバレッジはテストが**実行した**行を数えるだけで、テストが誤りを**検出できるか**は測らないからです。カバレッジ 99% のコードに mutation testing をかけたら、監査ログの穴が見つかった実測は[別の記事](https://qiita.com/SeckeyJP/items/b136d6d0bb2d830fb508)にまとめました。
 
 必要なのは、テストを増やすことではなく、**監督の面を増やす**ことです。
 
@@ -139,7 +139,7 @@ hooks:
 
 ### mutation score と要件の対応
 
-- **mutation score**: コードを意図的に壊して、テストが落ちるかを見ます。閾値は既定では置かず、自分のプロジェクトで計測してから決めます（詳細は [mutation testing の記事](https://zenn.dev/seckeyjp/articles/j-six-mutation-testing)）
+- **mutation score**: コードを意図的に壊して、テストが落ちるかを見ます。閾値は既定では置かず、自分のプロジェクトで計測してから決めます（詳細は [mutation testing の記事](https://qiita.com/SeckeyJP/items/b136d6d0bb2d830fb508)）
 - **トレーサビリティ**: Spec の要件 ID（`REQ-nnn`）と性質 ID（`PROP-nnn`）の一つひとつに、対応するテストがあるかを確認します
 
 ## 5. G3: 意図・スコープ判定 — 機械では見られないものだけを見る
@@ -184,7 +184,7 @@ J-SIX でも、G3 を恒久的な装備とはみなしていません。**却下
 
 LLM の判定は、再実行しても同じ結果になるとは限らず、第三者が同じ手順で確かめられません。証跡は、誰が何度実行しても同じ値になります。この違いを納品物の上でも区別します。
 
-証跡パッケージは、Phase 6 でテスト結果報告書・品質報告書・トレーサビリティマトリクスなど従来の納品物に変換できます（[設計書逆生成の記事](https://zenn.dev/seckeyjp/articles/j-six-doc-reverse-gen)）。納品直前に人手で書き起こすのではなく、実行時のデータを整形するので、コードとの乖離が起きません。
+証跡パッケージは、Phase 6 でテスト結果報告書・品質報告書・トレーサビリティマトリクスなど従来の納品物に変換できます（[設計書逆生成の記事](https://qiita.com/SeckeyJP/items/62c54852396ac4549462)）。納品直前に人手で書き起こすのではなく、実行時のデータを整形するので、コードとの乖離が起きません。
 
 ## 7. Hook は最終防衛線にならない — 内側ループと外側ループ
 
