@@ -1,15 +1,18 @@
 ---
 title: TDD × AI の10のアンチパターン — Claude Code で陥りやすい罠と対策
-private: false
 tags:
+  - SI
+  - ClaudeCode
   - j-six
-  - claudecode
   - ai-development
-  - si
-updated_at: '2026-04-04T02:44:32+09:00'
+private: false
+updated_at: '2026-09-20T00:02:05+09:00'
 id: 245988ce4fca5b2ba74a
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
