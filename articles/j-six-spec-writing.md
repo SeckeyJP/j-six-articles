@@ -12,7 +12,9 @@ published: true
 
 ## はじめに
 
-Claude Code（以下 CC）の初回自律実行成功率は約 33%[^anthropic-teams]。3 回に 2 回は失敗する。この数字だけ見ると「使い物にならない」と思うかもしれない。しかし、失敗の多くは CC の能力不足ではなく、**Spec が曖昧だから**起きている。
+Claude Code（以下 CC）は自律実行の幅を広げている。Anthropic の社内調査では、1 タスクあたりの人間の介入ターン数が 6.2 から 4.1 へ 33% 減った[^anthropic-work]。それでも介入はゼロにはならない。CC が手を止めて人間に判断を仰ぐとき、あるいは黙って意図と違う実装をするとき、その原因の多くは CC の能力不足ではなく **Spec の曖昧さ**にある — これが本記事の立場だ。
+
+※ 初版では冒頭で「CC の初回自律実行成功率は約 33%」と記載していたが、一次情報の 33% は人間の介入ターン数の減少率だった。訂正した（2026-09-19）。
 
 人間の開発者は曖昧な仕様を「常識」で補完する。「パスワードを適切に保存する」と書かれていれば、bcrypt か argon2 を選ぶだろう。しかし CC は訓練データの分布で補完する。それはあなたのプロジェクトの意図と一致するとは限らない。
 
@@ -350,6 +352,6 @@ https://github.com/SeckeyJP/j-six
 - [SDD 実践入門](https://zenn.dev/seckeyjp/articles/j-six-sdd-hands-on)
 - [TDD アンチパターン](https://zenn.dev/seckeyjp/articles/j-six-tdd-antipatterns)
 
-[^anthropic-teams]: Anthropic. "How Anthropic teams use Claude Code" (2025.07). https://claude.com/blog/how-anthropic-teams-use-claude-code — Anthropic RL Engineering チームの報告で、CC の初回自律実行成功率が約 33% と報告されている。
+[^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^anthropic-bp]: Anthropic. "Best Practices for Claude Code". https://code.claude.com/docs/en/best-practices
 [^cgi-sdd]: CGI. "Spec-driven development" (2026.03). https://www.cgi.com/en/blog/artificial-intelligence/spec-driven-development

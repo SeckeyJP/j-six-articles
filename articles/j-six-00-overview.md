@@ -44,9 +44,12 @@ V字モデルが合理的だった前提は、「実装コストが高い」「�
 
 | 指標 | 数値 | 出典 |
 |---|---|---|
-| 初回自律実行成功率 | 約33% | Anthropic 社内報告[^anthropic-teams] |
+| 人間の介入頻度 | 33%減少（6.2→4.1ターン/タスク） | Anthropic 社内調査[^anthropic-work] |
 | AI生成コードのイシュー率 | 人間の約1.7倍 | CodeRabbit 調査[^coderabbit] |
-| Sonnet 4.5 コード編集エラー率 | 0%（内部ベンチマーク） | Anthropic 公式[^sonnet45]（※現在は Sonnet 4.6 がリリース済み。数値は 4.5 発表時点のもの） |
+| コード編集エラー率 | 9%→0%（Sonnet 4→4.5） | Replit 内部ベンチマーク。Anthropic 公式発表より[^sonnet45] |
+
+※ 数値は各出典の発表時点のものです。モデルの世代更新により能力水準は継続的に変わっています。
+※ 初版では「初回自律実行成功率 約33%」と記載していましたが、一次情報の33%は人間の介入ターン数の減少率でした。訂正しました（2026-09-19）。
 
 **CCは「速いが雑な新人開発者」に似た特性を持ちます。** 適切なガードレール（TDD・Hooks・レビュー）があれば実用水準ですが、「任せっきり」は危険です。
 
@@ -228,8 +231,8 @@ https://github.com/SeckeyJP/j-six
 ### 引用した調査・データ
 
 [^coderabbit]: CodeRabbit. "State of AI vs Human Code Generation Report" (2025.12). https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-[^anthropic-teams]: Anthropic. "How Anthropic teams use Claude Code" (2025.07). https://claude.com/blog/how-anthropic-teams-use-claude-code
-[^sonnet45]: Anthropic. "Introducing Claude Sonnet 4.5" (2026.02). https://www.anthropic.com/news/claude-sonnet-4-5
+[^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
+[^sonnet45]: Anthropic. "Introducing Claude Sonnet 4.5" (2025.09). https://www.anthropic.com/news/claude-sonnet-4-5
 [^cgi-sdd]: CGI. "Spec-driven development: From vibe coding to intent engineering" (2026.03). https://www.cgi.com/en/blog/artificial-intelligence/spec-driven-development
 
 ### CC ベストプラクティス

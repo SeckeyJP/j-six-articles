@@ -22,7 +22,9 @@ AI 生成コードのイシュー率は人間の約1.7倍、セキュリティ�
 
 LLM は違います。LLM は「テストを通過させる」ことを最適化するだけで、「テストの品質が十分か」を自律的に判断する能力に限界があります。テストが通れば成功、通らなければ失敗。この単純な最適化が、人間とは異なるタイプの問題を引き起こします。
 
-データもこの傾向を裏付けています。DORA 2024 レポートによれば、AI 導入率が25%増加した一方で、デリバリー安定性は7.2%低下しました[^dora2024]。CC の初回自律実行成功率は約33%[^anthropic-teams]であり、AI生成コードのイシュー率は人間の約1.7倍です[^coderabbit]。速度は上がっても品質が追いつかない——この構造的な問題を理解した上で TDD を設計する必要があります。
+データもこの傾向を裏付けています。DORA 2024 レポートによれば、AI 導入率が25%増加した一方で、デリバリー安定性は7.2%低下しました[^dora2024]。CC は自律実行の幅を広げており、人間の介入ターン数は1タスクあたり6.2から4.1へ33%減りました[^anthropic-work]。その一方で、AI生成コードのイシュー率は人間の約1.7倍です[^coderabbit]。速度は上がっても品質が追いつかない——この構造的な問題を理解した上で TDD を設計する必要があります。
+
+※ 初版では「CC の初回自律実行成功率は約33%」と記載していましたが、一次情報の33%は人間の介入ターン数の減少率でした。訂正しました（2026-09-19）。
 
 以降では、この問題が具体的にどのような形で現れるかを10のパターンに分類します。
 
@@ -201,7 +203,7 @@ J-SIX の全ドキュメント・テンプレートは GitHub で公開してい
 https://github.com/SeckeyJP/j-six
 
 [^coderabbit]: CodeRabbit. "State of AI vs Human Code Generation Report" (2025.12). https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-[^anthropic-teams]: Anthropic. "How Anthropic teams use Claude Code" (2025.07). https://claude.com/blog/how-anthropic-teams-use-claude-code
+[^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^dora2024]: Google. "2024 DORA Accelerate State of DevOps Report". https://dora.dev/research/2024/dora-report/
 [^alexop-tdd]: alexop.dev. "Forcing Claude Code to TDD" (2025.11). https://alexop.dev/posts/custom-tdd-workflow-claude-code-vue/
 [^tautological]: DEV.to. "When AI-generated tests pass but miss the bug: a postmortem on tautological unit tests". https://dev.to/jamesdev4123/when-ai-generated-tests-pass-but-miss-the-bug-a-postmortem-on-tautological-unit-tests-2ajp

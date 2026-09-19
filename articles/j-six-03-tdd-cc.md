@@ -24,12 +24,14 @@ J-SIX プロセスの中で、最も生産性に寄与するのが **Phase 4: TD
 
 | 指標 | 数値 | 出典 |
 |---|---|---|
-| CC 初回自律実行成功率 | 約33% | Anthropic 社内報告[^anthropic-teams] |
+| 人間の介入頻度 | 33%減少（6.2→4.1ターン/タスク） | Anthropic 社内調査[^anthropic-work] |
 | AI生成コードのイシュー率 | 人間の約1.7倍 | CodeRabbit 調査[^coderabbit] |
 | セキュリティイシュー | 人間の最大2.74倍 | 同上[^coderabbit] |
 | エラーハンドリングの抜け | 人間の約2倍 | 同上[^coderabbit] |
 
-初回成功率33%という数値は、一見すると心もとなく映ります。しかしこれは「ガイダンスなしの自律実行」の数値です[^datacamp]。テストという明確な成功基準があり、リトライの仕組みがあれば、話は変わります。
+介入は減ったとはいえ、1タスクあたり平均4ターンほどは人間が舵を取っています[^anthropic-work]。生成コードのイシュー率も人間より高い水準です。CC に一度で正しい実装を期待するのではなく、テストという明確な成功基準とリトライの仕組みを用意することが前提になります。
+
+※ 初版では「CC 初回自律実行成功率 約33%」と記載していましたが、一次情報の33%は人間の介入ターン数の減少率でした。訂正しました（2026-09-19）。
 
 CC は **「速いが雑な新人開発者」** に似た特性を持ちます（著者の解釈）。単純なタスクは高い成功率で完了しますが、複雑なタスクではミスが多い。ただし、テストによるフィードバックがあれば自己修正が可能です。
 
@@ -408,9 +410,9 @@ Phase 4 の生産性をさらに高めるのが**並列実行**です。依存�
 | 依存タスクの逐次実行 | L3 | 先行タスクの結果を踏まえた判断が必要 |
 | 共有リソースを操作するタスク | L2-L3 | 競合リスクがあるため人間の監督が必要 |
 
-## 「初回成功率33%」への対処 — リトライ前提の設計
+## 一度で正解が出ない前提で設計する — リトライ前提の設計
 
-CC の初回成功率が約33%[^anthropic-teams]であることは、**リトライを前提としたプロセス設計**が必要であることを意味します。ここで重要なのが「Ralph Wiggum パターン」と呼ばれるアプローチです[^ralph-wiggum]。
+前述の通り、CC は人間の介入を減らしつつも、1タスクあたり平均4ターンほどの介入を受けており[^anthropic-work]、生成コードのイシュー率も人間より高い水準です[^coderabbit]。一度で正しい実装が出てくる前提には立てないため、**リトライを前提としたプロセス設計**が必要です。ここで重要なのが「Ralph Wiggum パターン」と呼ばれるアプローチです[^ralph-wiggum]。
 
 ### Ralph Wiggum パターン（成功基準定義型自律実行）
 
@@ -484,7 +486,7 @@ CC がコードを生成し、人間が毎回レビュー・承認します。�
 
 1. **TDD + サブエージェント分離 + Writer/Reviewer** の3つのメカニズムがあるから、CC の自律実行が実用水準になる
 2. **エスカレーション条件を明確に定義** しておけば、CC は「判断すべきでない場面」を自動的に検出して人間に委ねる
-3. **リトライ前提の設計**（Ralph Wiggum パターン）で、初回成功率33%でも生産性は確保できる
+3. **リトライ前提の設計**（Ralph Wiggum パターン）で、一度で正解が出なくても生産性は確保できる
 
 Phase 4 は「CC に丸投げする」フェーズではありません。テストという明確な成功基準、Hooks によるガードレール、エスカレーションによる人間の介入ポイントを設計した上で、CC の実行速度を最大限に活かすフェーズです。
 
@@ -510,6 +512,7 @@ https://github.com/SeckeyJP/j-six
 ## 参考文献
 
 [^anthropic-teams]: Anthropic. "How Anthropic teams use Claude Code" (2025.07). https://claude.com/blog/how-anthropic-teams-use-claude-code
+[^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^coderabbit]: CodeRabbit. "State of AI vs Human Code Generation Report" (2025.12). https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
 [^datacamp]: DataCamp. "Claude Code Best Practices" (2026.03). https://www.datacamp.com/tutorial/claude-code-best-practices
 [^anthropic-bp]: Anthropic. "Best Practices for Claude Code". https://code.claude.com/docs/en/best-practices

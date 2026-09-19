@@ -64,9 +64,11 @@ V 字モデルの前提が崩壊したからといって、CC に任せれば全
 
 | 指標 | 数値 | 出典 |
 |---|---|---|
-| 初回自律実行成功率 | 約 33% | Anthropic RL Engineering チームの報告[^anthropic-teams] |
+| 人間の介入頻度 | 33% 減少（6.2→4.1 ターン/タスク） | Anthropic 社内調査[^anthropic-work] |
 | AI 生成 PR のイシュー率 | 人間の約 1.7 倍 | CodeRabbit 調査（2025.12、470PR 分析）[^coderabbit] |
 | セキュリティイシュー | 人間の最大 2.74 倍 | 同上[^coderabbit] |
+
+※ 初版では「初回自律実行成功率 約 33%」と記載していたが、一次情報の 33% は人間の介入ターン数の減少率だった。訂正した（2026-09-19）。
 
 CC は「速いが雑な新人開発者」に類似する特性を持つ（著者の解釈）。適切なガードレール — TDD、Hooks、レビュー — があれば実用水準に達するが、「任せっきり」は危険だ。
 
@@ -266,6 +268,7 @@ V 字モデルの全てが間違っていたわけではない。品質ゲート
 
 [^coderabbit]: CodeRabbit. "State of AI vs Human Code Generation Report" (2025.12). https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
 [^anthropic-teams]: Anthropic. "How Anthropic teams use Claude Code" (2025.07). https://claude.com/blog/how-anthropic-teams-use-claude-code
+[^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^cgi-sdd]: CGI. "Spec-driven development: From vibe coding to intent engineering" (2026.03). https://www.cgi.com/en/blog/artificial-intelligence/spec-driven-development
 [^agentfactory-sdd]: Agent Factory / Panaversity. "Chapter 16: Spec-Driven Development with Claude Code". https://agentfactory.panaversity.org/docs/General-Agents-Foundations/spec-driven-development
 [^bmad]: BMAD-METHOD (GitHub). https://github.com/bmad-code-org/BMAD-METHOD
