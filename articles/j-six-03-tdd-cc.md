@@ -66,7 +66,7 @@ SpecBench は、コーディングエージェントが見えているテスト�
 | G3 | 意図・スコープ判定 | 別コンテキストの judge が「正確性・要件未充足・スコープ逸脱」だけを判定 | LLM |
 | G4 | 証跡パッケージ | G1〜G3 の結果を人間レビュー・顧客納品向けに構造化 | スクリプト＋LLM（要約のみ） |
 
-順序は固定で、前段を通過したものだけが後段に進みます。4層の詳細は [J-SIX.md の Phase 4](https://github.com/SeckeyJP/j-six/blob/main/docs/J-SIX.md) で定義しています。
+順序は固定で、前段を通過したものだけが後段に進みます。4層の詳細は [J-SIX.md の Phase 4](https://github.com/SeckeyJP/j-six/blob/main/docs/J-SIX.md) で定義しています。G2 の mutation score については、カバレッジ 99% のコードで実測した記録を[番外編](https://zenn.dev/seckeyjp/articles/j-six-mutation-testing)にまとめています。
 
 ### J-SIX の各 Phase と自律度
 
