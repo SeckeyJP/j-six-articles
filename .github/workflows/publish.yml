@@ -41,8 +41,15 @@ jobs:
             git add qiita/public/
             git commit -m "Replace Zenn links with Qiita links"
             git push
-            npm install -g @qiita/qiita-cli@v1.8.0
+            npm install -g @qiita/qiita-cli@v1.10.0
             qiita publish --all --root ./qiita
+            # 再公開で Qiita 側の updated_at が進むため、qiita-cli が書き戻した値をコミットする。
+            # 書き戻さないと、次回その記事を更新したときに「Qiita上の記事より古い」で publish が止まる
+            if ! git diff --quiet qiita/; then
+              git add qiita/
+              git commit -m "Updated by qiita-cli (after link replacement)"
+              git push
+            fi
           fi
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
