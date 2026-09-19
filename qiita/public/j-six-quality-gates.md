@@ -1,16 +1,18 @@
 ---
 title: AI の「テストは通りました」を鵜呑みにしない — 人間レビューの前に置く4層品質ゲート
-published_at: '2026-09-21 07:00'
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-09-20T01:01:56+09:00'
+  - SI
+private: false
+updated_at: '2026-09-20T01:13:55+09:00'
 id: 735cf0618ae9e98c4c9e
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
