@@ -315,7 +315,7 @@ J-SIX への移行は、V字モデルを「捨てる」ことではありませ�
 - **レガシーコードにも適用できる**。「島を作る」戦略で段階的に対応
 - **壁は技術だけではない**。組織・顧客の壁にも計画的に対処する
 
-J-SIX は著者のオリジナル設計であり、提示した工数削減率や ROI は推定目標値です。大規模な実証データはまだありません。しかし、Stage 1 のリスクの小ささを考えれば、「まず試してみる」のハードルは低いはずです。
+J-SIX は著者のオリジナル設計であり、提示した工数削減率や ROI は推定目標値です。大規模な実証データはまだありません。小規模な題材でのケーススタディは GitHub で公開しています（カバレッジ 99% のコードの mutation score が 91.8% だった、等の実測）[^case-studies]。一方、工数削減率を実測するための「人手のみの実装」との比較は、協力者と題材を確保できず見送っており、工数削減率は推定のままです。しかし、Stage 1 のリスクの小ささを考えれば、「まず試してみる」のハードルは低いはずです。
 
 本シリーズが、日本の SI 開発の進化を考えるきっかけになれば幸いです。
 
@@ -343,3 +343,4 @@ https://github.com/SeckeyJP/j-six
 [^anthropic-enterprise]: Anthropic. "Claude Code and new admin controls for business plans". https://www.anthropic.com/news/claude-code-on-team-and-enterprise
 [^feathers]: Michael Feathers. "Working Effectively with Legacy Code" (2004). 特性化テスト、レガシーコード改善手法の原典
 [^fowler-strangler]: Martin Fowler. "StranglerFigApplication". https://martinfowler.com/bliki/StranglerFigApplication.html
+[^case-studies]: J-SIX. ケーススタディ #1（申請承認ワークフロー）・#2（mutation score の実測）. https://github.com/SeckeyJP/j-six/tree/main/docs

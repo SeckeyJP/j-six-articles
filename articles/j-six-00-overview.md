@@ -209,7 +209,7 @@ J-SIX は日本のSI開発プロセスを「捨てる」のではなく「進化
 - **段階的に移行できる。** 既存案件を止めずに3ステージで移行
 - **期待効果は大きい。** 実装工数 60-70%削減（著者推定目標値）
 
-このプロセスは著者のオリジナル設計ですが、世界標準のSDD原則と、Anthropic・CodeRabbit等の公開データに基づいています。期待効果の数値は推定であり、実プロジェクトでの検証はこれからの課題です。
+このプロセスは著者のオリジナル設計ですが、世界標準のSDD原則と、Anthropic・CodeRabbit等の公開データに基づいています。期待効果の数値は推定であり、実プロジェクトでの検証はこれからの課題です。小規模な題材でのケーススタディは GitHub で公開しています（カバレッジ 99% のコードの mutation score が 91.8% だった、等の実測）[^case-studies]。一方、工数削減率を実測するための「人手のみの実装」との比較は、協力者と題材を確保できず見送っており、工数削減率は推定のままです。
 
 ## シリーズ記事
 
@@ -234,6 +234,7 @@ https://github.com/SeckeyJP/j-six
 [^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^sonnet45]: Anthropic. "Introducing Claude Sonnet 4.5" (2025.09). https://www.anthropic.com/news/claude-sonnet-4-5
 [^cgi-sdd]: CGI. "Spec-driven development: From vibe coding to intent engineering" (2026.03). https://www.cgi.com/en/blog/artificial-intelligence/spec-driven-development
+[^case-studies]: J-SIX. ケーススタディ #1（申請承認ワークフロー）・#2（mutation score の実測）. https://github.com/SeckeyJP/j-six/tree/main/docs
 
 ### CC ベストプラクティス
 
