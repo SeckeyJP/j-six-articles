@@ -1,27 +1,26 @@
 ---
 title: TDD × AI の10のアンチパターン — Claude Code で陥りやすい罠と対策
-tags:
-  - SI
-  - ClaudeCode
-  - j-six
-  - ai-development
 private: false
+tags:
+  - j-six
+  - claudecode
+  - ai-development
+  - si
 updated_at: '2026-04-04T02:44:32+09:00'
 id: 245988ce4fca5b2ba74a
 organization_url_name: null
 slide: false
-ignorePublish: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の番外編です。シリーズ全体の概要は [#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f)、TDD の基本プロセスは [#3 TDD × Claude Code](https://qiita.com/SeckeyJP/items/a9dc743a14977686adbf) をご覧ください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の番外編です。シリーズ全体の概要は [#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)、TDD の基本プロセスは [#3 TDD × Claude Code](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) をご覧ください。
 :::
 
 ## はじめに
 
 AI 生成コードのイシュー率は人間の約1.7倍、セキュリティイシューは最大2.74倍[^coderabbit]。TDD で品質を担保するはずが、AI 特有の罠によって「テスト通過、バグ残留」という状態に陥ることがあります。
 
-本記事では、Claude Code（以下 CC）で TDD を実践する際に陥りやすい **10のアンチパターン** と、その対策を整理します。[#3 TDD × Claude Code](https://qiita.com/SeckeyJP/items/a9dc743a14977686adbf) で紹介した TDD プロセスを運用する中で「なぜかうまくいかない」と感じている方に向けた、トラブルシューティングガイドです。
+本記事では、Claude Code（以下 CC）で TDD を実践する際に陥りやすい **10のアンチパターン** と、その対策を整理します。[#3 TDD × Claude Code](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) で紹介した TDD プロセスを運用する中で「なぜかうまくいかない」と感じている方に向けた、トラブルシューティングガイドです。
 
 ## なぜ AI の TDD は人間の TDD と違うのか
 
@@ -29,7 +28,9 @@ AI 生成コードのイシュー率は人間の約1.7倍、セキュリティ�
 
 LLM は違います。LLM は「テストを通過させる」ことを最適化するだけで、「テストの品質が十分か」を自律的に判断する能力に限界があります。テストが通れば成功、通らなければ失敗。この単純な最適化が、人間とは異なるタイプの問題を引き起こします。
 
-データもこの傾向を裏付けています。DORA 2024 レポートによれば、AI 導入率が25%増加した一方で、デリバリー安定性は7.2%低下しました[^dora2024]。CC の初回自律実行成功率は約33%[^anthropic-teams]であり、AI生成コードのイシュー率は人間の約1.7倍です[^coderabbit]。速度は上がっても品質が追いつかない——この構造的な問題を理解した上で TDD を設計する必要があります。
+データもこの傾向を裏付けています。DORA 2024 レポートによれば、AI 導入率が25%増加した一方で、デリバリー安定性は7.2%低下しました[^dora2024]。CC は自律実行の幅を広げており、人間の介入ターン数は1タスクあたり6.2から4.1へ33%減りました[^anthropic-work]。その一方で、AI生成コードのイシュー率は人間の約1.7倍です[^coderabbit]。速度は上がっても品質が追いつかない——この構造的な問題を理解した上で TDD を設計する必要があります。
+
+※ 初版では「CC の初回自律実行成功率は約33%」と記載していましたが、一次情報の33%は人間の介入ターン数の減少率でした。訂正しました（2026-09-19）。
 
 以降では、この問題が具体的にどのような形で現れるかを10のパターンに分類します。
 
@@ -208,7 +209,7 @@ J-SIX の全ドキュメント・テンプレートは GitHub で公開してい
 https://github.com/SeckeyJP/j-six
 
 [^coderabbit]: CodeRabbit. "State of AI vs Human Code Generation Report" (2025.12). https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-[^anthropic-teams]: Anthropic. "How Anthropic teams use Claude Code" (2025.07). https://claude.com/blog/how-anthropic-teams-use-claude-code
+[^anthropic-work]: Anthropic. "How AI is Transforming Work at Anthropic" (2025.12). https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic
 [^dora2024]: Google. "2024 DORA Accelerate State of DevOps Report". https://dora.dev/research/2024/dora-report/
 [^alexop-tdd]: alexop.dev. "Forcing Claude Code to TDD" (2025.11). https://alexop.dev/posts/custom-tdd-workflow-claude-code-vue/
 [^tautological]: DEV.to. "When AI-generated tests pass but miss the bug: a postmortem on tautological unit tests". https://dev.to/jamesdev4123/when-ai-generated-tests-pass-but-miss-the-bug-a-postmortem-on-tautological-unit-tests-2ajp
