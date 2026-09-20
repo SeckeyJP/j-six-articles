@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事は「**J-SIX：Japanese SI Transformation**」シリーズの番外編です。シリーズ全体の概要は[#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)をご覧ください。3層ドキュメント戦略の背景と理論は[#2 3層ドキュメント](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc)で解説しています。
+本記事は「**J-SIX：Japanese SI Transformation**」シリーズの番外編です。シリーズ全体の概要は[#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f)をご覧ください。3層ドキュメント戦略の背景と理論は[#2 3層ドキュメント](https://qiita.com/SeckeyJP/items/8f413ed405ae0398f94c)で解説しています。
 :::
 
 :::note
@@ -25,7 +25,7 @@ agreed_posting_campaign_term: false
 
 ## はじめに — 「逆生成」の実装編
 
-[シリーズ #2](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc) では、「設計書はなくならない。作り方が変わる」と提案しました。コードを Source of Truth として、設計書を逆生成するアプローチです。
+[シリーズ #2](https://qiita.com/SeckeyJP/items/8f413ed405ae0398f94c) では、「設計書はなくならない。作り方が変わる」と提案しました。コードを Source of Truth として、設計書を逆生成するアプローチです。
 
 本記事はその**実装編**です。J-SIX Plugin の `doc-reverse-gen` Skill を使って、コードから設計書を具体的にどう作るかを解説します。
 
@@ -49,7 +49,7 @@ J-SIX: Spec → TDD実装 → 品質検証 → 設計書の逆生成
 
 このアプローチは J-SIX 独自のものではありません。富士通は2025年にAIによる設計書リバースエンジニアリングサービスを発表し、手動比50%の効率化を報告しています[^fujitsu]。
 
-ただし、[#2 で詳しく分析した通り](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc)、コードからは「なぜそう設計したか（Why）」と「なぜ他の方法を採らなかったか（Why Not）」は復元できません。この限界を補うのが3層ドキュメント戦略です。`doc-reverse-gen` Skill は第3層（What/How）の生成を担当し、第1層（Spec）と第2層（ADR）の情報を引用元付きで取り込みます。
+ただし、[#2 で詳しく分析した通り](https://qiita.com/SeckeyJP/items/8f413ed405ae0398f94c)、コードからは「なぜそう設計したか（Why）」と「なぜ他の方法を採らなかったか（Why Not）」は復元できません。この限界を補うのが3層ドキュメント戦略です。`doc-reverse-gen` Skill は第3層（What/How）の生成を担当し、第1層（Spec）と第2層（ADR）の情報を引用元付きで取り込みます。
 
 ## 2. 「基本設計書」を直接作らない
 
@@ -228,7 +228,7 @@ Skill は、成果物の由来によって扱いを変えます。
 | 事前提出 | Phase 2 品質ゲート（設計レビュー） | 人手の5点、要求 Spec、Design Spec、ADR、**実動プロトタイプ** |
 | 納品 | Phase 6 | 27点すべて（逆生成の19点を含む）、証跡パッケージ |
 
-事前提出の合意をどう進めるか（合意成熟度・顧客の目次との対応・非機能要件）は、[工程成果物27点で合意を分解する記事](https://zenn.dev/seckeyjp/articles/j-six-ipa-deliverables)で詳しく扱っています。
+事前提出の合意をどう進めるか（合意成熟度・顧客の目次との対応・非機能要件）は、[工程成果物27点で合意を分解する記事](https://qiita.com/SeckeyJP/items/9ca2e51f16189d62a5f6)で詳しく扱っています。
 
 事前提出では、逆生成する章に**代替物**を入れます。画面なら実動プロトタイプの画面キャプチャ、データなら Design Spec の ER 概要といった形です。その章には「本章は Phase 6 に実装から逆生成した版に差し替える」と明記します。
 
