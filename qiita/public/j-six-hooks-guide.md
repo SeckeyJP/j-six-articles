@@ -6,7 +6,7 @@ tags:
   - ai-development
   - SI
 private: false
-updated_at: '2026-09-21T01:35:16+09:00'
+updated_at: '2026-09-21T01:35:23+09:00'
 id: b593f60a90a48a492c27
 organization_url_name: null
 slide: false
