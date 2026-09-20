@@ -1,22 +1,19 @@
 ---
 title: 【J-SIX#2】3層ドキュメント戦略 — 設計書は「逆生成」の時代へ
-tags:
-  - SI
-  - ClaudeCode
-  - j-six
-  - ai-development
 private: false
+tags:
+  - j-six
+  - claudecode
+  - ai-development
+  - si
 updated_at: '2026-04-02T01:49:56+09:00'
 id: 8f413ed405ae0398f94c
 organization_url_name: null
 slide: false
-ignorePublish: false
-posting_campaign_uuid: null
-agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の #2 です。シリーズ全体の概要は[#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f)をご覧ください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の #2 です。シリーズ全体の概要は[#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)をご覧ください。
 :::
 
 ## はじめに — 「設計書はどうなるのか？」
@@ -302,6 +299,8 @@ Phase 2 で作成する Design Spec と実動プロトタイプを、基本設�
 
 現実的には、多くのプロジェクトは短期の対策から始めることになるでしょう。重要なのは、顧客に対して「設計書を廃止する」ではなく「設計書の品質を上げる」というメッセージを伝えることです。
 
+なお J-SIX v2.1 では、この段階的対策をさらに具体化し、IPA の工程成果物27点の単位で「どの章を事前に出し、どの章を納品時に差し替えるか」を決める方式にしました。詳しくは[工程成果物27点で合意を分解する記事](https://zenn.dev/seckeyjp/articles/j-six-ipa-deliverables)をご覧ください。
+
 ## まとめ
 
 本記事の要点を整理します。
@@ -320,12 +319,12 @@ Phase 2 で作成する Design Spec と実動プロトタイプを、基本設�
 
 | # | タイトル | 状態 |
 |---|---|---|
-| #0 | [J-SIX 概論 — なぜ今、日本のSI開発プロセスを再設計するのか](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f) | 公開済 |
-| #1 | [V字モデルの前提崩壊と SDD の台頭](https://qiita.com/SeckeyJP/items/f23360f42ee385bd9213) | 公開済 |
+| #0 | [J-SIX 概論 — なぜ今、日本のSI開発プロセスを再設計するのか](https://zenn.dev/seckeyjp/articles/j-six-00-overview) | 公開済 |
+| #1 | [V字モデルの前提崩壊と SDD の台頭](https://zenn.dev/seckeyjp/articles/j-six-01-sdd) | 公開済 |
 | **#2** | **本記事（3層ドキュメント戦略）** | ✅ |
-| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://qiita.com/SeckeyJP/items/a9dc743a14977686adbf) | 公開済 |
-| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://qiita.com/SeckeyJP/items/d267f1c523eb95b2c9b5) | 公開済 |
-| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](https://qiita.com/SeckeyJP/items/8fe3905cf5a3520cfd8a) | 公開済 |
+| #3 | [TDD × Claude Code — 自律実行で生産性を最大化する](https://zenn.dev/seckeyjp/articles/j-six-03-tdd-cc) | 公開済 |
+| #4 | [CLAUDE.md 実践ガイド — AI開発の「プロジェクト憲法」を書く](https://zenn.dev/seckeyjp/articles/j-six-04-claude-md) | 公開済 |
+| #5 | [V字モデルからの段階的移行 — 既存案件を止めずに J-SIX へ](https://zenn.dev/seckeyjp/articles/j-six-05-migration) | 公開済 |
 
 ## 参考文献・リンク
 
