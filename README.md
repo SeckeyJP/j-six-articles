@@ -82,7 +82,7 @@ push すると GitHub Actions が Zenn / Qiita に自動公開します。
 | #4 | j-six-04-claude-md | CLAUDE.md 実践ガイド | 公開済 |
 | #5 | j-six-05-migration | V字モデルからの段階的移行 | 公開済 |
 
-### 番外編（11本）
+### 番外編（13本）
 
 | slug | タイトル | 状態 |
 |---|---|---|
@@ -97,6 +97,8 @@ push すると GitHub Actions が Zenn / Qiita に自動公開します。
 | j-six-scheduled-tasks | CC Scheduled Tasks | 公開済 |
 | j-six-mutation-testing | カバレッジ 99% × mutation testing の実測 | 公開済 |
 | j-six-quality-gates | 人間レビューの前に置く4層品質ゲート | 公開済 |
+| j-six-ipa-deliverables | IPA 工程成果物27点で合意を分解する | 公開済 |
+| j-six-plugin-field-test | Plugin 実動検証で見つけた8件の不具合 | 公開済 |
 
 ## 関連リポジトリ
 
