@@ -1,16 +1,18 @@
 ---
 title: 「設計書を先に出してください」にどう答えるか — IPA の工程成果物27点で合意を分解する
-published_at: '2026-09-21 12:00'
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-09-20T16:32:40.760Z'
-id: null
+  - SI
+private: false
+updated_at: '2026-09-21T01:35:16+09:00'
+id: 9ca2e51f16189d62a5f6
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note

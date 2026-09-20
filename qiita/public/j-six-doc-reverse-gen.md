@@ -1,15 +1,18 @@
 ---
 title: 設計書逆生成の実装 — コードから納品物を自動生成する Phase 6
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-09-21T01:32:48+09:00'
+  - SI
+private: false
+updated_at: '2026-09-21T01:35:16+09:00'
 id: 62c54852396ac4549462
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note

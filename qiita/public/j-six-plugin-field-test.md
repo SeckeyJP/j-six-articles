@@ -1,16 +1,18 @@
 ---
 title: 自作の Claude Code Plugin を動かしてみたら、読み込まれてすらいなかった — ヘッドレス実行で見つけた8件の不具合
-published_at: '2026-09-22 07:00'
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-09-20T16:32:41.132Z'
-id: null
+  - SI
+private: false
+updated_at: '2026-09-21T01:35:16+09:00'
+id: 37448b1981004ceb5bb0
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
