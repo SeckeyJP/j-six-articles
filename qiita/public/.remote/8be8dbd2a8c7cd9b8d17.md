@@ -6,7 +6,7 @@ tags:
   - ai-development
   - SI
 private: false
-updated_at: '2026-09-21T22:03:01+09:00'
+updated_at: '2026-09-21T22:03:08+09:00'
 id: 8be8dbd2a8c7cd9b8d17
 organization_url_name: null
 slide: false
@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第1回です。シリーズ全体の概要は [#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview) をご覧ください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第1回です。シリーズ全体の概要は [#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f) をご覧ください。
 :::
 
 ## この連載でやること
@@ -88,7 +88,7 @@ claude plugin add ./plugin
 claude plugin validate ./plugin
 ```
 
-この確認を勧めるのには理由があります。J-SIX の Plugin は以前、マニフェスト（`plugin.json`）の書き方が1か所違っていたために、**Skill も Agent も Hook も一つも動かない状態で公開されていました**。しかもエラーは起動時のメッセージに出るだけで、普通に使っていると気づきません。この経緯は[Plugin 実動検証の記事](https://zenn.dev/seckeyjp/articles/j-six-plugin-field-test)に書きました。
+この確認を勧めるのには理由があります。J-SIX の Plugin は以前、マニフェスト（`plugin.json`）の書き方が1か所違っていたために、**Skill も Agent も Hook も一つも動かない状態で公開されていました**。しかもエラーは起動時のメッセージに出るだけで、普通に使っていると気づきません。この経緯は[Plugin 実動検証の記事](https://qiita.com/SeckeyJP/items/37448b1981004ceb5bb0)に書きました。
 
 ## 3. 何が使えるようになるのか
 
@@ -189,7 +189,7 @@ G1（決定論的検証）から G4（証跡パッケージ）まで、順に判
 出力の `⏭` は「未実行」を表します。ローカルでは、ビルドやテストのコマンドを毎回は実行せず、**既にある成果物（テスト結果やカバレッジのファイル）を読んで判定するだけ**にしています。ターンが終わるたびに数分待たされると、人は Hook そのものを無効にしてしまうからです。コマンドを実際に実行するのは CI の役割です。
 
 :::note
-ゲートは Stop Hook（CC が応答を終えるたびに動く Hook）としても実行されます。つまり、CC が「できました」と言った直後に自動で判定が走ります。詳しくは[4層品質ゲートの記事](https://zenn.dev/seckeyjp/articles/j-six-quality-gates)をご覧ください。
+ゲートは Stop Hook（CC が応答を終えるたびに動く Hook）としても実行されます。つまり、CC が「できました」と言った直後に自動で判定が走ります。詳しくは[4層品質ゲートの記事](https://qiita.com/SeckeyJP/items/735cf0618ae9e98c4c9e)をご覧ください。
 :::
 
 ## ここまでのまとめ
