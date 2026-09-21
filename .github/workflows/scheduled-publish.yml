@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 公開日を迎えた記事を published: true にする
+      - name: "公開日を迎えた記事を published: true にする"
         id: flip
         run: |
           python3 - <<'PY'
