@@ -100,6 +100,21 @@ push すると GitHub Actions が Zenn / Qiita に自動公開します。
 | j-six-ipa-deliverables | IPA 工程成果物27点で合意を分解する | 公開済 |
 | j-six-plugin-field-test | Plugin 実動検証で見つけた8件の不具合 | 公開済 |
 
+### 実践編（全6回・予約投稿）
+
+1つの要件（請求書への振込先口座の印字）を、要求の一言から納品物まで通した記録。
+
+| slug | タイトル | Zenn 公開予定 |
+|---|---|---|
+| j-six-walkthrough-01-setup | Plugin を入れて、最初のプロジェクトを立ち上げる | 2026-09-23 12:00 |
+| j-six-walkthrough-02-spec | 「振込先を印字したい」を実装できる Spec にする | 2026-09-24 12:00 |
+| j-six-walkthrough-03-design | 判断を ADR に残し、タスクに分解する | 2026-09-25 12:00 |
+| j-six-walkthrough-04-tdd | TDD と4層品質ゲート | 2026-09-28 12:00 |
+| j-six-walkthrough-05-deliverables | 画面・帳票と、27点の設計書 | 2026-09-29 12:00 |
+| j-six-walkthrough-06-retrospective | 測れたこと、測れていないこと | 2026-09-30 12:00 |
+
+> Qiita は push 時点で公開される。Zenn は1日2記事の上限があるため、平日に1日1本で予約している。
+
 ## 関連リポジトリ
 
 - **[j-six](https://github.com/SeckeyJP/j-six)** — J-SIX プロセス本体（ドキュメント・テンプレート）

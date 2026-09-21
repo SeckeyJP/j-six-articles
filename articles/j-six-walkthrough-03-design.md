@@ -3,7 +3,8 @@ title: "【実践3】判断を ADR に残し、タスクに分解する — 変�
 emoji: "🧭"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: false
+published: true
+published_at: 2026-09-25 12:00
 ---
 
 :::message

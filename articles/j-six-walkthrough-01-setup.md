@@ -3,7 +3,8 @@ title: "【実践1】J-SIX でシステムを作る — Plugin を入れて、�
 emoji: "🏗️"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: false
+published: true
+published_at: 2026-09-23 12:00
 ---
 
 :::message

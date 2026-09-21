@@ -3,7 +3,8 @@ title: "【実践2】「振込先を印字したい」を実装できる Spec �
 emoji: "📐"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: false
+published: true
+published_at: 2026-09-24 12:00
 ---
 
 :::message
