@@ -1,0 +1,10 @@
+{
+  "_comment": "公開予定表。日付（JST）を迎えた記事を scheduled-publish.yml が published: true に切り替える。Zenn は push で、Qiita はワークフローの publish で公開される。",
+  "articles": [
+    { "slug": "j-six-walkthrough-02-spec", "date": "2026-09-24" },
+    { "slug": "j-six-walkthrough-03-design", "date": "2026-09-25" },
+    { "slug": "j-six-walkthrough-04-tdd", "date": "2026-09-28" },
+    { "slug": "j-six-walkthrough-05-deliverables", "date": "2026-09-29" },
+    { "slug": "j-six-walkthrough-06-retrospective", "date": "2026-09-30" }
+  ]
+}

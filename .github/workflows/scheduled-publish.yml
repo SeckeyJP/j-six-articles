@@ -1,0 +1,74 @@
+name: Scheduled publish
+
+# 公開予定表（.github/publish-schedule.json）の日付を迎えた記事を published: true にする。
+# Zenn は push で公開され、Qiita は Publish articles ワークフローが公開する。
+#
+# 1日1本ずつ公開することで、Qiita の記事一覧が連載の順序どおりに並び、
+# 投稿数のレートリミットにも当たらない。
+
+on:
+  schedule:
+    # 03:00 UTC = 12:00 JST（毎日）
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  flip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 公開日を迎えた記事を published: true にする
+        id: flip
+        run: |
+          python3 - <<'PY'
+          import io, json, os, re
+          from datetime import datetime, timedelta, timezone
+
+          JST = timezone(timedelta(hours=9))
+          today = datetime.now(JST).date()
+          schedule = json.load(io.open(".github/publish-schedule.json", encoding="utf-8"))
+
+          flipped = []
+          for entry in schedule["articles"]:
+              due = datetime.strptime(entry["date"], "%Y-%m-%d").date()
+              if due > today:
+                  continue
+              path = "articles/%s.md" % entry["slug"]
+              if not os.path.exists(path):
+                  print("見つからない:", path)
+                  continue
+              text = io.open(path, encoding="utf-8").read()
+              if not re.search(r"^published: false$", text, re.M):
+                  continue  # 既に公開済み
+              text = re.sub(r"^published: false$", "published: true", text, count=1, flags=re.M)
+              io.open(path, "w", encoding="utf-8").write(text)
+              flipped.append(entry["slug"])
+              print("公開に切り替え:", entry["slug"], "(予定日 %s)" % entry["date"])
+
+          with io.open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write("flipped=%s\n" % " ".join(flipped))
+          PY
+
+      - name: コミットして push
+        if: steps.flip.outputs.flipped != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add articles/
+          git commit -m "Publish scheduled articles: ${{ steps.flip.outputs.flipped }}"
+          git push
+
+      - name: Publish articles ワークフローを起動
+        if: steps.flip.outputs.flipped != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # GITHUB_TOKEN による push では他のワークフローが起動しないため、明示的に呼ぶ
+          gh workflow run "Publish articles" --ref main

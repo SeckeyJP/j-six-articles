@@ -3,8 +3,7 @@ title: "【実践4】TDD と4層品質ゲート — ゲートが実際に捕ま�
 emoji: "🚧"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: true
-published_at: 2026-09-28 12:00
+published: false
 ---
 
 :::message

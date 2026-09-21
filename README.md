@@ -113,7 +113,12 @@ push すると GitHub Actions が Zenn / Qiita に自動公開します。
 | j-six-walkthrough-05-deliverables | 画面・帳票と、27点の設計書 | 2026-09-29 12:00 |
 | j-six-walkthrough-06-retrospective | 測れたこと、測れていないこと | 2026-09-30 12:00 |
 
-> Qiita は push 時点で公開される。Zenn は1日2記事の上限があるため、平日に1日1本で予約している。
+> **公開の仕組み**: 第1回は Zenn の予約投稿（9/23 12:00）。第2回以降は `published: false` のままにし、
+> `.github/publish-schedule.json` の日付を迎えた記事を `scheduled-publish.yml`（毎日 12:00 JST）が
+> `published: true` に切り替える。これにより Zenn と Qiita の両方で1日1本ずつ順番に公開される。
+>
+> この方式にした理由: Qiita は push 時点で公開されるため6本を一度に出すと（1）記事一覧の並び順が
+> 連載の順序にならない（作成日時が同一になる）、（2）投稿数のレートリミットに当たる。
 
 ## 関連リポジトリ
 
