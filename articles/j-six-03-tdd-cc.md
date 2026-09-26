@@ -94,7 +94,7 @@ Phase 4 が高い自律度で運用できるのは、以下の3つのメカニ�
 
 ### メカニズム 2: サブエージェント分離でコンテキスト汚染を防止
 
-テスト作成者（Red Agent）と実装者（Green Agent）を CC のサブエージェントとして分離します。これにより、実装者がテストを改変して「通ったことにする」問題を防止できます[^alexop-tdd]。テストをコミットしてから実装にハンドオフすることで、追加の安全策となります[^anthropic-bp][^datacamp]。
+テスト作成者（Red Agent）と実装者（Green Agent）を CC のサブエージェントとして分離します。テストを先にコミットしてから実装にハンドオフすると、後の改変を検出する基準点を固定できます[^alexop-tdd][^anthropic-bp][^datacamp]。担当分離だけでテスト改変を完全に防げるわけではなく、Git 差分と品質ゲートで照合します。
 
 ### メカニズム 3: Writer/Reviewer パターンで自己バイアスを排除
 
@@ -102,7 +102,7 @@ Phase 4 が高い自律度で運用できるのは、以下の3つのメカニ�
 
 ```mermaid
 flowchart TD
-    A["Phase 3 完了<br>タスク一覧承認済み"] --> HO["Hold-out Test Writer<br>受入テスト作成<br>(Green からは読めない)"]
+    A["Phase 3 完了<br>タスク一覧承認済み"] --> HO["Hold-out Test Writer<br>受入テスト作成<br>(Green 担当へ共有しない)"]
     HO --> B["Red Agent<br>テスト作成"]
     B --> C{"テスト失敗<br>確認?"}
     C -- Yes --> D["テストをコミット<br>(チェックポイント)"]
