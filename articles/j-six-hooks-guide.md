@@ -229,7 +229,7 @@ chmod +x .claude/hooks/tdd-enforce.sh
 
 Red のテストをコミットしてから、対象テストを `npx vitest run src/user.test.ts --reporter=json --outputFile=.claude/tdd-red.json` で実行します。終了コードが非0で、レポートの `numFailedTests > 0` と失敗した `assertionResults` を確認した場合だけ、`jq -n --arg target src/user.ts --arg test src/user.test.ts --arg commit "$(git rev-parse HEAD)" --arg test_blob "$(git hash-object src/user.test.ts)" '{target:$target,test:$test,commit:$commit,test_blob:$test_blob}' > .claude/tdd-red-state.json` を作り、`.claude/tdd-phase` を `green` にします。テストランナーの初期化失敗を Red と数えません。
 
-Green が通ったら実装をコミットし、同じ対象テストを `--outputFile=.claude/tdd-green.json` で実行します。終了コード0、`numFailedTests == 0`、`numPassedTests > 0` を確認してから、同じ4項目を `.claude/tdd-green-state.json` に記録し、フェーズを `refactor` にします。**各レポートは対応する対象版で取得し、フェーズを変える前に結果を検査**してください。Hook は記録とレポートの一致を再確認します。
+Green が通ったら実装をコミットし、同じ対象テストを `--outputFile=.claude/tdd-green.json` で実行します。終了コード0、`numFailedTests == 0`、`numPassedTests > 0` を確認してから、同じ4項目を `.claude/tdd-green-state.json` に記録し、フェーズを `refactor` にします。**各レポートは対応する対象版で取得し、フェーズを変える前に結果を検査**してください。Hook が機械的に照合するのは対象パス・HEAD・テストファイルの版とレポート内の合否条件までです。レポートの取得対象と版の対応は、この手順で確認します。
 
 **ポイント**: `permissionDecision: deny` は理由を CC に返します。exit code 2 でも呼び出しは拒否できますが、理由は stderr で渡す必要があります[^hooks-ref]。
 
