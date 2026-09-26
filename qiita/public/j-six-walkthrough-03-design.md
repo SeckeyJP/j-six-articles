@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第3回です。[第2回：「振込先を印字したい」を実装できる Spec にする](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-02-spec)の続きです。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第3回です。[第2回：「振込先を印字したい」を実装できる Spec にする](https://qiita.com/SeckeyJP/items/53ae7bc9bd862951c60d)の続きです。
 :::
 
 ## 今回やること
@@ -164,7 +164,7 @@ G3 は、実装したのとは別のコンテキストで起動する判定者�
 
 右側は、実装から逆生成する成果物です。実装前に書いても、実装後に書き直すことになります。
 
-J-SIX では、**これらを事前に書きません**。代わりに、実動プロトタイプや Spec の記述を「代替物」として提出し、納品時に逆生成版へ差し替えることを、顧客と先に合意します。この進め方の詳細は[IPA の工程成果物27点で合意を分解する記事](https://zenn.dev/seckeyjp/articles/j-six-ipa-deliverables)に書きました。
+J-SIX では、**これらを事前に書きません**。代わりに、実動プロトタイプや Spec の記述を「代替物」として提出し、納品時に逆生成版へ差し替えることを、顧客と先に合意します。この進め方の詳細は[IPA の工程成果物27点で合意を分解する記事](https://qiita.com/SeckeyJP/items/9ca2e51f16189d62a5f6)に書きました。
 
 そして、**詳細設計書も実装前には書きません**。Phase 3 の成果物であるタスク一覧（受入条件・PROP・変更許可範囲つき）を、詳細設計書の代替として合意します。関数単位の処理を日本語で書いても、実装後にコードと二重管理になるだけだからです。
 

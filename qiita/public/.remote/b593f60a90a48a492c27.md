@@ -1,15 +1,18 @@
 ---
 title: CC Hooks 実践ガイド — 品質ガードレールをコードで自動化する
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
+  - SI
+private: false
 updated_at: '2026-09-27T06:54:42+09:00'
 id: b593f60a90a48a492c27
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
