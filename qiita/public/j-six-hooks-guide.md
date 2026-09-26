@@ -6,7 +6,7 @@ tags:
   - claudecode
   - ai-development
   - si
-updated_at: '2026-09-21T01:35:23+09:00'
+updated_at: '2026-09-27T06:54:42+09:00'
 id: b593f60a90a48a492c27
 organization_url_name: null
 slide: false
