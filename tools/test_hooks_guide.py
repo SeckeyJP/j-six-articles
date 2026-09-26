@@ -48,7 +48,7 @@ class HooksGuideTests(unittest.TestCase):
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=self.root, text=True).strip()
         blob = subprocess.check_output(["git", "hash-object", "src/user.test.ts"], cwd=self.root, text=True).strip()
         state = {"target": "src/user.ts", "test": "src/user.test.ts", "commit": commit, "test_blob": blob}
-        hook = lambda: run_hook(script, self.root, {"file_path": "src/user.ts"})
+        hook = lambda path="src/user.ts": run_hook(script, self.root, {"file_path": path})
         (self.root / ".claude/tdd-phase").write_text("red\n")
         self.assertEqual(hook()["hookSpecificOutput"]["permissionDecision"], "deny")
         (self.root / ".claude/tdd-red-state.json").write_text(json.dumps(state))
@@ -58,6 +58,13 @@ class HooksGuideTests(unittest.TestCase):
         self.assertEqual(hook()["hookSpecificOutput"]["permissionDecision"], "deny")
         report.write_text(json.dumps({"numFailedTests": 1, "testResults": [{"assertionResults": [{"status": "failed"}]}]}))
         self.assertIsNone(hook())
+        self.assertIsNone(hook(str(target)))
+        self.assertEqual(hook("src/other.ts")["hookSpecificOutput"]["permissionDecision"], "deny")
+        state["target"] = "src/new.ts"
+        (self.root / ".claude/tdd-red-state.json").write_text(json.dumps(state))
+        self.assertIsNone(hook(str(self.root / "src/new.ts")))
+        state["target"] = "src/user.ts"
+        (self.root / ".claude/tdd-red-state.json").write_text(json.dumps(state))
         (self.root / ".claude/tdd-green-state.json").write_text(json.dumps(state))
         (self.root / ".claude/tdd-green.json").write_text(json.dumps({"numFailedTests": 0, "numPassedTests": 1}))
         (self.root / ".claude/tdd-phase").write_text("refactor\n")

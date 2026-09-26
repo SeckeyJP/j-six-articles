@@ -196,7 +196,18 @@ if echo "$FILE" | grep -qE '\.(ts|tsx|js|jsx)$'; then
   TEST=$(jq -r '.test // empty' "$STATE")
   COMMIT=$(jq -r '.commit // empty' "$STATE")
   TEST_BLOB=$(jq -r '.test_blob // empty' "$STATE")
-  [ "$FILE" = "$TARGET" ] && [ -f "$TEST" ] &&
+  PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || deny "Git の作業ルートを確認できません"
+  PROJECT_ROOT=$(cd "$PROJECT_ROOT" && pwd -P) || deny "Git の作業ルートを確認できません"
+  normalize_path() {
+    local candidate="$1" parent
+    case "$candidate" in /*) ;; *) candidate="$PROJECT_ROOT/$candidate" ;; esac
+    parent=$(cd "$(dirname "$candidate")" && pwd -P) || return 1
+    printf '%s/%s\n' "$parent" "$(basename "$candidate")"
+  }
+  FILE_NORM=$(normalize_path "$FILE") || deny "編集先の親ディレクトリを確認できません"
+  TARGET_NORM=$(normalize_path "$TARGET") || deny "対象の親ディレクトリを確認できません"
+  case "$FILE_NORM" in "$PROJECT_ROOT"/*) ;; *) deny "作業ルート外の編集は対象外です" ;; esac
+  [ "$FILE_NORM" = "$TARGET_NORM" ] && [ -f "$TEST" ] &&
     [ "$(git rev-parse HEAD)" = "$COMMIT" ] &&
     [ "$(git hash-object "$TEST")" = "$TEST_BLOB" ] ||
     deny "対象ファイル・コミット・テスト版が判定記録と一致しません"
@@ -222,7 +233,7 @@ Green が通ったら実装をコミットし、同じ対象テストを `--outp
 
 **ポイント**: `permissionDecision: deny` は理由を CC に返します。exit code 2 でも呼び出しは拒否できますが、理由は stderr で渡す必要があります[^hooks-ref]。
 
-**制限**: この例は `src/user.ts` と `src/user.test.ts` のように対象を明示する運用です。複数ファイル、別のテストランナー、未コミットの Red/Green を扱う場合は、記録形式と照合条件を拡張します。フェーズ記録やレポートは作業者が変更できるため、組織の強制境界にはなりません。保護が必要なら CI と権限分離で補います。
+**制限**: この例は `src/user.ts` と `src/user.test.ts` のように対象を明示する運用です。編集先は Git 作業ルートを基準に正規化するため、同じ対象の相対・絶対パスを扱えます。複数ファイル、別のテストランナー、未コミットの Red/Green を扱う場合は、記録形式と照合条件を拡張します。フェーズ記録やレポートは作業者が変更できるため、組織の強制境界にはなりません。保護が必要なら CI と権限分離で補います。
 
 ### レシピ 2: テスト改変防止 — Green Phase でテストファイルを守る（PreToolUse）
 
