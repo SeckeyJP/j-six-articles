@@ -20,9 +20,9 @@ J-SIX シリーズや [TDD アンチパターン記事](https://zenn.dev/seckeyj
 
 Hooks は、CC のライフサイクルの特定ポイントで **自動実行されるユーザー定義処理** です[^hooks-guide]。
 
-CLAUDE.md に書くルールは「助言」です。CC はルールを尊重しますが、コンテキストが膨らんだり、最適化圧力が強まったりすると逸脱することがあります。一方、Hooks は「強制」です。条件に合致すれば必ず実行され、exit code によってツール実行をブロックできます。この違いが重要です。
+CLAUDE.md に書くルールは CC への指示です。一方、Hooks は設定が有効なセッションで対象イベントに一致した操作に対してスクリプトを実行し、その結果に応じてツール実行を拒否できます。この違いが重要です。
 
-**CLAUDE.md = 助言（ソフトガードレール）、Hooks = 強制（ハードガードレール）。** 両方を組み合わせることで、品質のガードレールが完成します。
+**CLAUDE.md は行動を指示し、Hooks は一致した操作に検査をかけます。** 組織全体で強制するには、後述の CI と権限分離も必要です。
 
 ### ライフサイクルイベント
 
@@ -131,7 +131,7 @@ command ハンドラーには、stdin 経由で JSON が渡されます[^hooks-r
 
 ### レシピ 1: TDD 強制 — 実装前にテスト失敗を確認する（PreToolUse）
 
-[TDD アンチパターン](https://zenn.dev/seckeyjp/articles/j-six-tdd-antipatterns)の「①実装ファースト偏向（Vibe TDD）」への対策です。CC はテストを後回しにして実装ファーストに自然回帰しやすいため[^hooks-guide]、**実装ファイルを編集する前に「テストが失敗していること」を機械的に確認** します。
+[TDD アンチパターン](https://zenn.dev/seckeyjp/articles/j-six-tdd-antipatterns)の「①実装ファースト偏向（Vibe TDD）」への対策です。CC はテストを後回しにして実装ファーストに自然回帰しやすいため[^hooks-guide]、**Green 開始時に対象テストの Red 判定を確認**します。Refactor 中は成功した Green 判定を確認します。以下は Vitest の JSON レポートを使う例です。
 
 #### settings.json
 
@@ -158,20 +158,21 @@ command ハンドラーには、stdin 経由で JSON が渡されます[^hooks-r
 
 ```bash
 #!/bin/bash
-# TDD 強制 Hook: 実装ファイル編集前にテスト失敗を確認する
-# - テストファイルへの書き込みは常に許可
-# - 実装ファイルへの書き込み → テストが失敗中（Red Phase）でなければブロック
+# 対象ファイル・コミット・テスト版と構造化した結果を照合する
 
 INPUT=$(cat)
-TOOL=$(echo "$INPUT" | jq -r '.tool_name')
-FILE=$(echo "$INPUT" | jq -r '.tool_input.file_path // empty')
+FILE=$(printf '%s' "$INPUT" | jq -r '.tool_input.file_path // empty')
+deny() {
+  jq -n --arg reason "$1" '{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"deny",permissionDecisionReason:$reason}}'
+  exit 0
+}
 
 # ファイルパスが取得できない場合はスキップ
 if [ -z "$FILE" ]; then
   exit 0
 fi
 
-# テストファイルへの書き込みは常に許可
+# テスト編集は別レシピ（Green 中の保護）で扱う
 if echo "$FILE" | grep -qE '\.(test|spec)\.(ts|tsx|js|jsx)$'; then
   exit 0
 fi
@@ -181,16 +182,41 @@ if echo "$FILE" | grep -qE '\.(json|md|yml|yaml|toml|css|scss)$'; then
   exit 0
 fi
 
-# 実装ファイルへの書き込み → テストが失敗していることを確認
 if echo "$FILE" | grep -qE '\.(ts|tsx|js|jsx)$'; then
-  RESULT=$(npm test 2>&1)
-  if echo "$RESULT" | grep -q "FAIL"; then
-    # テスト失敗中 = Red Phase → 実装を許可
-    exit 0
+  PHASE=$(cat .claude/tdd-phase 2>/dev/null)
+  case "$PHASE" in
+    green) STAGE=red ;;
+    refactor) STAGE=green ;;
+    *) deny "実装編集には Green/Refactor のフェーズ記録が必要です" ;;
+  esac
+  STATE=".claude/tdd-${STAGE}-state.json"
+  REPORT=".claude/tdd-${STAGE}.json"
+  [ -f "$STATE" ] && [ -f "$REPORT" ] || deny "${STAGE} の判定記録がありません"
+  TARGET=$(jq -r '.target // empty' "$STATE")
+  TEST=$(jq -r '.test // empty' "$STATE")
+  COMMIT=$(jq -r '.commit // empty' "$STATE")
+  TEST_BLOB=$(jq -r '.test_blob // empty' "$STATE")
+  PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || deny "Git の作業ルートを確認できません"
+  PROJECT_ROOT=$(cd "$PROJECT_ROOT" && pwd -P) || deny "Git の作業ルートを確認できません"
+  normalize_path() {
+    local candidate="$1" parent
+    case "$candidate" in /*) ;; *) candidate="$PROJECT_ROOT/$candidate" ;; esac
+    parent=$(cd "$(dirname "$candidate")" && pwd -P) || return 1
+    printf '%s/%s\n' "$parent" "$(basename "$candidate")"
+  }
+  FILE_NORM=$(normalize_path "$FILE") || deny "編集先の親ディレクトリを確認できません"
+  TARGET_NORM=$(normalize_path "$TARGET") || deny "対象の親ディレクトリを確認できません"
+  case "$FILE_NORM" in "$PROJECT_ROOT"/*) ;; *) deny "作業ルート外の編集は対象外です" ;; esac
+  [ "$FILE_NORM" = "$TARGET_NORM" ] && [ -f "$TEST" ] &&
+    [ "$(git rev-parse HEAD)" = "$COMMIT" ] &&
+    [ "$(git hash-object "$TEST")" = "$TEST_BLOB" ] ||
+    deny "対象ファイル・コミット・テスト版が判定記録と一致しません"
+  if [ "$STAGE" = red ]; then
+    jq -e '(.numFailedTests > 0) and (([.testResults[]?.assertionResults[]? | select(.status=="failed")] | length) > 0)' "$REPORT" >/dev/null ||
+      deny "対象テストの Red（失敗したアサーション）を確認できません"
   else
-    # テスト全パス or テストなし → Red Phase ではない → ブロック
-    echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Red Phase のテスト失敗が確認できません。先にテストを書いて、失敗することを確認してから実装に移ってください。"}}'
-    exit 0
+    jq -e '(.numFailedTests == 0) and (.numPassedTests > 0)' "$REPORT" >/dev/null ||
+      deny "対象テストの Green（成功）を確認できません"
   fi
 fi
 
@@ -201,9 +227,13 @@ exit 0
 chmod +x .claude/hooks/tdd-enforce.sh
 ```
 
-**ポイント**: `permissionDecision: deny` を使うと、CC に「なぜブロックされたか」の理由を伝えられます。exit code 2 でもブロックはできますが、理由が伝わらないため CC が同じ操作を繰り返すリスクがあります[^hooks-guide]。
+Red のテストをコミットしてから、対象テストを `npx vitest run src/user.test.ts --reporter=json --outputFile=.claude/tdd-red.json` で実行します。終了コードが非0で、レポートの `numFailedTests > 0` と失敗した `assertionResults` を確認した場合だけ、`jq -n --arg target src/user.ts --arg test src/user.test.ts --arg commit "$(git rev-parse HEAD)" --arg test_blob "$(git hash-object src/user.test.ts)" '{target:$target,test:$test,commit:$commit,test_blob:$test_blob}' > .claude/tdd-red-state.json` を作り、`.claude/tdd-phase` を `green` にします。テストランナーの初期化失敗を Red と数えません。
 
-**制限**: このスクリプトは `npm test` を毎回実行するため、テストスイートが大きいプロジェクトではオーバーヘッドが気になります。その場合は、変更対象ファイルに対応するテストファイルだけを実行する（例: `src/user.ts` → `src/user.test.ts`）ように改良するか、後述の tdd-guard を検討してください。
+Green が通ったら実装をコミットし、同じ対象テストを `--outputFile=.claude/tdd-green.json` で実行します。終了コード0、`numFailedTests == 0`、`numPassedTests > 0` を確認してから、同じ4項目を `.claude/tdd-green-state.json` に記録し、フェーズを `refactor` にします。**各レポートは対応する対象版で取得し、フェーズを変える前に結果を検査**してください。Hook が機械的に照合するのは対象パス・HEAD・テストファイルの版とレポート内の合否条件までです。レポートの取得対象と版の対応は、この手順で確認します。
+
+**ポイント**: `permissionDecision: deny` は理由を CC に返します。exit code 2 でも呼び出しは拒否できますが、理由は stderr で渡す必要があります[^hooks-ref]。
+
+**制限**: この例は `src/user.ts` と `src/user.test.ts` のように対象を明示する運用です。編集先は Git 作業ルートを基準に正規化するため、同じ対象の相対・絶対パスを扱えます。複数ファイル、別のテストランナー、未コミットの Red/Green を扱う場合は、記録形式と照合条件を拡張します。フェーズ記録やレポートは作業者が変更できるため、組織の強制境界にはなりません。保護が必要なら CI と権限分離で補います。
 
 ### レシピ 2: テスト改変防止 — Green Phase でテストファイルを守る（PreToolUse）
 
@@ -381,7 +411,7 @@ exit 0
 
 ```bash
 #!/bin/bash
-# エスカレーション監視 Hook: テスト3回連続失敗で停止する
+# エスカレーション監視 Hook: テスト3回連続失敗ならユーザーへ返す
 # Stop イベントで実行し、テスト結果を記録・判定する
 
 FAIL_COUNT_FILE=".claude/test-fail-count"
@@ -402,15 +432,9 @@ if [ $EXIT_CODE -ne 0 ]; then
 
   if [ $COUNT -ge 3 ]; then
     # 3回連続失敗: 停止を要求
-    echo "テストが${COUNT}回連続で失敗しています。"
-    echo "局所的な修正ではなく、設計レベルの問題の可能性があります。"
-    echo "人間にエスカレーションしてください。"
-    echo ""
-    echo "直近のエラー:"
-    echo "$RESULT" | tail -20
-    # カウントをリセット
-    echo "0" > "$FAIL_COUNT_FILE"
-    exit 2
+    REASON="テストが${COUNT}回連続で失敗しました。設計を含めて人間が確認してください。直近の出力: $(printf '%s' "$RESULT" | tail -20)"
+    jq -n --arg reason "$REASON" '{continue:false,stopReason:$reason}'
+    exit 0
   fi
 else
   # テスト成功: カウントをリセット
@@ -420,7 +444,7 @@ fi
 exit 0
 ```
 
-**ポイント**: Stop イベントは CC が応答を完了するたびに発火します。テスト実行を毎回行うため、テストスイートの実行時間が長いプロジェクトでは `timeout` を十分に確保してください。
+**ポイント**: Stop イベントで exit 2 を返すと、CC の終了を妨げて続行させます。人間へ返して止めたい場合は、上のように `continue:false` と `stopReason` の JSON を標準出力に出して exit 0 にします[^hooks-ref]。失敗カウントは成功時か人間が確認して再開を決めた時まで残します。Stop のたびにテストを実行するため、実行時間に応じて `timeout` を設定してください。
 
 **制限**: この方法はテスト全体の成功/失敗で判定しています。特定のテストケースが3回連続失敗したかどうかは追跡していません。より精密な監視が必要な場合は、テスト結果の JSON 出力を解析する拡張が必要です。
 
@@ -481,15 +505,13 @@ DANGEROUS_PATTERNS=(
   "mkfs\."
   "dd if="
   "chmod -R 777"
-  "curl.*| *sh"
-  "curl.*| *bash"
-  "wget.*| *sh"
-  "wget.*| *bash"
+  "(^|[[:space:];])curl([[:space:]]|$).*\\|[[:space:]]*(sh|bash)([[:space:];]|$)"
+  "(^|[[:space:];])wget([[:space:]]|$).*\\|[[:space:]]*(sh|bash)([[:space:];]|$)"
 )
 
 for PATTERN in "${DANGEROUS_PATTERNS[@]}"; do
   if echo "$COMMAND" | grep -qE "$PATTERN"; then
-    echo "{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"危険なコマンドが検出されました: パターン '$PATTERN' にマッチしました。このコマンドは実行できません。\"}}"
+    jq -n --arg pattern "$PATTERN" '{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"deny",permissionDecisionReason:("危険なコマンドに一致: " + $pattern)}}'
     exit 0
   fi
 done
@@ -499,7 +521,7 @@ exit 0
 
 **ポイント**: パターンリストはプロジェクトに応じてカスタマイズしてください。例えば本番 DB への接続コマンドや、特定のブランチへの直接 push を追加することもできます。
 
-**制限**: パターンマッチは完璧ではありません。コマンドのエイリアスや変数展開で回避される可能性があります。あくまで「うっかり」の防止であり、悪意ある操作への対策ではない点に留意してください。
+**制限**: パターンマッチは完璧ではありません。例えば通常の `git status --short` と単独の `curl https://example.com` は許可し、`curl ... | sh` は拒否します。コマンドのエイリアスや変数展開、別ツールの操作までは検査できません。あくまで「うっかり」の防止であり、悪意ある操作への対策ではありません。この掲載例はこのマシンの共通コマンド制御とは別物です。
 
 ## 4. tdd-guard — OSS の TDD 強制 Hook
 
@@ -580,9 +602,9 @@ flowchart TB
 
 ## まとめ
 
-CLAUDE.md は助言、Hooks は強制。両方を揃えることで、ガードレールが完成します。
+CLAUDE.md の指示に Hooks の操作時検査を加えると、対象イベントでは違反をその場で拒否できます。
 
-CLAUDE.md に「テストを先に書くこと」と書いても CC が従わないことはあります。しかし Hook で「テストが失敗していなければ実装ファイルの編集をブロックする」と設定すれば、物理的に回避できません。この「強制力の差」が、品質の自動化において決定的です[^hooks-guide]。
+CLAUDE.md に「テストを先に書くこと」と書いても CC が従わないことはあります。Hook は、設定が有効なセッションで matcher に一致したツール操作を拒否できます。ただし掲載例の Edit/Write や Bash 以外の経路、設定・フェーズ記録の変更、Hook のタイムアウトまで遮断するものではありません。組織として強制する場合は、保護された CI、レビュー権限、実行環境のアクセス制御も必要です[^hooks-ref]。
 
 まずはレシピ 5（危険コマンドブロック）から始めてみてください。最も簡単で、効果がすぐ実感できます。品質に厳しいプロジェクトなら、レシピ 1 + 2 または tdd-guard の導入を検討してください。
 
