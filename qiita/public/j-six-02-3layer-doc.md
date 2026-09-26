@@ -1,15 +1,18 @@
 ---
 title: 【J-SIX#2】3層ドキュメント戦略 — 設計書は「逆生成」の時代へ
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
+  - SI
+private: false
 updated_at: '2026-09-27T06:54:42+09:00'
 id: 8f413ed405ae0398f94c
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note

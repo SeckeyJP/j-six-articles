@@ -1,15 +1,18 @@
 ---
 title: 【実践2】「振込先を印字したい」を実装できる Spec にする — AI に決めさせてはいけないこと
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-09-26T21:54:32.585Z'
-id: null
+  - SI
+private: false
+updated_at: '2026-09-27T07:37:43+09:00'
+id: 53ae7bc9bd862951c60d
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
