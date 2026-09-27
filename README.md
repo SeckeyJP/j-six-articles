@@ -115,10 +115,17 @@ push すると GitHub Actions が Zenn / Qiita に自動公開します。
 
 > **公開の仕組み**: 第1回は Zenn の予約投稿（9/23 12:00）。第2回以降は `published: false` のままにし、
 > `.github/publish-schedule.json` の日付を迎えた記事を `scheduled-publish.yml`（毎日 12:00 JST）が
-> `published: true` に切り替える。これにより Zenn と Qiita の両方で1日1本ずつ順番に公開される。
+> `published: true` に切り替える。先行記事が Zenn と Qiita の公開一覧で確認できなければ後続を止め、
+> 滞留しても1回に1本だけ進める。Zenn の直近公開から24時間以内なら次回へ送る。
+> `verify-publication.yml`（毎日 21:00 JST）は両媒体の実掲載を照合し、不一致を Actions の失敗として表示する。
+> GitHub の公開フラグや Actions の成功だけでは、Zenn への掲載完了を意味しない。
 >
 > この方式にした理由: Qiita は push 時点で公開されるため6本を一度に出すと（1）記事一覧の並び順が
 > 連載の順序にならない（作成日時が同一になる）、（2）投稿数のレートリミットに当たる。
+
+2026-09-27 時点で実践３は Zenn の投稿数上限により未掲載、Qiita には掲載済み。
+公開予定日は目標であり、先行記事が未掲載の場合は後続の公開日も繰り下がる。
+公開状態の手動確認は `python3 scripts/publication_status.py verify --date YYYY-MM-DD` で行う。
 
 ## 関連リポジトリ
 
