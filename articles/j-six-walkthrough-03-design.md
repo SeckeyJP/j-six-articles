@@ -6,6 +6,8 @@ topics: ["j-six", "claudecode", "ai-development", "si"]
 published: true
 ---
 
+<!-- Zenn deployment retry after publication limit; article text unchanged. -->
+
 :::message
 本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第3回です。[第2回：「振込先を印字したい」を実装できる Spec にする](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-02-spec)の続きです。
 :::
