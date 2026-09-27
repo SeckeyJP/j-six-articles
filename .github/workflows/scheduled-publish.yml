@@ -3,8 +3,8 @@ name: Scheduled publish
 # 公開予定表（.github/publish-schedule.json）の日付を迎えた記事を published: true にする。
 # Zenn は push で公開され、Qiita は Publish articles ワークフローが公開する。
 #
-# 1日1本ずつ公開することで、Qiita の記事一覧が連載の順序どおりに並び、
-# 投稿数のレートリミットにも当たらない。
+# 公開面で先行記事を確認してから、1回につき最大1本を切り替える。
+# 投稿数の上限自体は予測できないため、事後の掲載確認も別workflowで行う。
 
 on:
   schedule:
@@ -27,33 +27,27 @@ jobs:
       - name: "公開日を迎えた記事を published: true にする"
         id: flip
         run: |
+          set -euo pipefail
+          candidate=$(python3 scripts/publication_status.py next --date "$(TZ=Asia/Tokyo date +%F)")
+          if [ -z "$candidate" ]; then
+            echo "公開対象なし"
+            exit 0
+          fi
+          export CANDIDATE="$candidate"
           python3 - <<'PY'
-          import io, json, os, re
-          from datetime import datetime, timedelta, timezone
+          import io, os, re
 
-          JST = timezone(timedelta(hours=9))
-          today = datetime.now(JST).date()
-          schedule = json.load(io.open(".github/publish-schedule.json", encoding="utf-8"))
-
-          flipped = []
-          for entry in schedule["articles"]:
-              due = datetime.strptime(entry["date"], "%Y-%m-%d").date()
-              if due > today:
-                  continue
-              path = "articles/%s.md" % entry["slug"]
-              if not os.path.exists(path):
-                  print("見つからない:", path)
-                  continue
-              text = io.open(path, encoding="utf-8").read()
-              if not re.search(r"^published: false$", text, re.M):
-                  continue  # 既に公開済み
-              text = re.sub(r"^published: false$", "published: true", text, count=1, flags=re.M)
-              io.open(path, "w", encoding="utf-8").write(text)
-              flipped.append(entry["slug"])
-              print("公開に切り替え:", entry["slug"], "(予定日 %s)" % entry["date"])
+          slug = os.environ["CANDIDATE"]
+          path = "articles/%s.md" % slug
+          text = io.open(path, encoding="utf-8").read()
+          updated, count = re.subn(r"^published: false$", "published: true", text, count=1, flags=re.M)
+          if count != 1:
+              raise SystemExit("公開フラグが予期した状態ではありません: " + slug)
+          io.open(path, "w", encoding="utf-8").write(updated)
+          print("公開に切り替え:", slug)
 
           with io.open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
-              fh.write("flipped=%s\n" % " ".join(flipped))
+              fh.write("flipped=%s\n" % slug)
           PY
 
       - name: コミットして push

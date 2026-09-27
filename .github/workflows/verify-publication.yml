@@ -1,0 +1,19 @@
+name: Verify publication
+
+on:
+  schedule:
+    # 12:00 UTC = 21:00 JST。昼の予約処理と配信側の反映に時間を置く。
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Zenn and Qiita public listings
+        run: python3 scripts/publication_status.py verify --date "$(TZ=Asia/Tokyo date +%F)"
