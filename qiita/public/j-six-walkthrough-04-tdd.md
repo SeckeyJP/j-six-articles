@@ -1,15 +1,18 @@
 ---
 title: 【実践4】TDD と4層品質ゲート — ゲートが実際に捕まえた5つのこと
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-10-17T10:53:26.152Z'
-id: null
+  - SI
+private: false
+updated_at: '2026-10-17T19:53:37+09:00'
+id: '92320359914404643279'
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
