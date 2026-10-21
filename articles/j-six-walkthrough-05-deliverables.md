@@ -3,7 +3,7 @@ title: "【実践5】画面・帳票と、27点の設計書 — 実装から起�
 emoji: "📚"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: false
+published: true
 ---
 
 :::message
