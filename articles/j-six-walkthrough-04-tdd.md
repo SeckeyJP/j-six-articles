@@ -6,6 +6,8 @@ topics: ["j-six", "claudecode", "ai-development", "si"]
 published: true
 ---
 
+<!-- Zenn deployment retry after publication limit; article text unchanged. -->
+
 :::message
 本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第4回です。[第3回：判断を ADR に残し、タスクに分解する](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-03-design)の続きです。
 :::
