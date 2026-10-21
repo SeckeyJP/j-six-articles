@@ -1,22 +1,21 @@
 ---
 title: 【実践4】TDD と4層品質ゲート — ゲートが実際に捕まえた5つのこと
+private: false
 tags:
   - j-six
-  - ClaudeCode
+  - claudecode
   - ai-development
-  - SI
-private: false
+  - si
 updated_at: '2026-10-17T19:53:43+09:00'
 id: '92320359914404643279'
 organization_url_name: null
 slide: false
-ignorePublish: false
-posting_campaign_uuid: null
-agreed_posting_campaign_term: false
 ---
 
+<!-- Zenn deployment retry after publication limit; article text unchanged. -->
+
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第4回です。[第3回：判断を ADR に残し、タスクに分解する](https://qiita.com/SeckeyJP/items/1fab10277cbea6e03290)の続きです。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第4回です。[第3回：判断を ADR に残し、タスクに分解する](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-03-design)の続きです。
 :::
 
 ## 今回やること
