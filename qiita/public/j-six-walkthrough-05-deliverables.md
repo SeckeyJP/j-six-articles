@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第5回です。[第4回：TDD と4層品質ゲート](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-04-tdd)の続きです。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の第5回です。[第4回：TDD と4層品質ゲート](https://qiita.com/SeckeyJP/items/'92320359914404643279')の続きです。
 :::
 
 ## 今回やること
@@ -156,7 +156,7 @@ flowchart TB
 1冊の表紙に書かれた日付は、中身の新しさを保証しません。章ごとに逆生成元と日付が分かる形にしておくことが、逆生成方式では重要になります。
 
 :::note
-今回のサンプルは、**顧客と目次を合意していません**。そのため J-SIX 同梱の組立例をそのまま使い、その旨を設計書の冒頭に明記しています。実案件では、顧客の目次に構成要素を対応付けた組立定義を先に作り、Phase 2 のゲートで合意します。詳しくは[IPA の工程成果物27点の記事](https://zenn.dev/seckeyjp/articles/j-six-ipa-deliverables)をご覧ください。
+今回のサンプルは、**顧客と目次を合意していません**。そのため J-SIX 同梱の組立例をそのまま使い、その旨を設計書の冒頭に明記しています。実案件では、顧客の目次に構成要素を対応付けた組立定義を先に作り、Phase 2 のゲートで合意します。詳しくは[IPA の工程成果物27点の記事](https://qiita.com/SeckeyJP/items/9ca2e51f16189d62a5f6)をご覧ください。
 :::
 
 ## 5. 詳細設計書は「コードを読んでも分からないこと」に絞る
