@@ -1,15 +1,18 @@
 ---
 title: 【実践5】画面・帳票と、27点の設計書 — 実装から起こして顧客の様式に束ねる
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-10-21T21:10:01.084Z'
-id: null
+  - SI
+private: false
+updated_at: '2026-10-22T06:10:10+09:00'
+id: 4d016d2dc52c4074189c
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
