@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の最終回です。[第5回：画面・帳票と、27点の設計書](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-05-deliverables)の続きです。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の最終回です。[第5回：画面・帳票と、27点の設計書](https://qiita.com/SeckeyJP/items/4d016d2dc52c4074189c)の続きです。
 :::
 
 ## 今回やること
@@ -193,9 +193,9 @@ https://github.com/SeckeyJP/j-six/tree/main/examples/monthly-billing
 
 | 回 | タイトル |
 |---|---|
-| 1 | [Plugin を入れて、最初のプロジェクトを立ち上げる](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-01-setup) |
-| 2 | [「振込先を印字したい」を実装できる Spec にする](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-02-spec) |
-| 3 | [判断を ADR に残し、タスクに分解する](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-03-design) |
-| 4 | [TDD と4層品質ゲート](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-04-tdd) |
-| 5 | [画面・帳票と、27点の設計書](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-05-deliverables) |
+| 1 | [Plugin を入れて、最初のプロジェクトを立ち上げる](https://qiita.com/SeckeyJP/items/8be8dbd2a8c7cd9b8d17) |
+| 2 | [「振込先を印字したい」を実装できる Spec にする](https://qiita.com/SeckeyJP/items/53ae7bc9bd862951c60d) |
+| 3 | [判断を ADR に残し、タスクに分解する](https://qiita.com/SeckeyJP/items/1fab10277cbea6e03290) |
+| 4 | [TDD と4層品質ゲート](https://qiita.com/SeckeyJP/items/'92320359914404643279') |
+| 5 | [画面・帳票と、27点の設計書](https://qiita.com/SeckeyJP/items/4d016d2dc52c4074189c) |
 | **6** | **本記事（振り返り）** |
