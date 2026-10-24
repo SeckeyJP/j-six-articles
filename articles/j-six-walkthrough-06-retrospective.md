@@ -3,7 +3,7 @@ title: "【実践6】J-SIX で1つの要件を通してみて — 測れたこ�
 emoji: "📊"
 type: "tech"
 topics: ["j-six", "claudecode", "ai-development", "si"]
-published: false
+published: true
 ---
 
 :::message
