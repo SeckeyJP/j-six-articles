@@ -6,6 +6,8 @@ topics: ["j-six", "claudecode", "ai-development", "si"]
 published: true
 ---
 
+<!-- Zenn deployment retry after publication limit; article text unchanged. -->
+
 :::message
 本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の実践編（全6回）の最終回です。[第5回：画面・帳票と、27点の設計書](https://zenn.dev/seckeyjp/articles/j-six-walkthrough-05-deliverables)の続きです。
 :::
