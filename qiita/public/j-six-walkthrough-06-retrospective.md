@@ -1,15 +1,18 @@
 ---
 title: 【実践6】J-SIX で1つの要件を通してみて — 測れたこと、測れていないこと
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-10-24T14:35:14+09:00'
+  - SI
+private: false
+updated_at: '2026-11-22T17:06:29+09:00'
 id: 8bf54ad191885dd2a2ca
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 <!-- Zenn deployment retry; article text unchanged. -->
