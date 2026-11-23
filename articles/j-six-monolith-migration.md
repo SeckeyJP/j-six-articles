@@ -226,7 +226,7 @@ L4 はこの記事では扱いません。J-SIX は L4 の条件を、品質ゲ�
 
 J-SIX のサンプルシステムでは、カバレッジ 99% のコードの mutation score が 91.8% で、生き残ったミュータントから本物のテストの穴が見つかりました（J-SIX の既存の実測。[mutation testing の記事](https://zenn.dev/seckeyjp/articles/j-six-mutation-testing)）。カバレッジだけでは十分性は分かりません。
 
-大規模なモノリスの全体に変異テストをかけるのは、時間の面で現実的でないことが多いと考えます（著者の見解）。変更するモジュールに絞ります。J-SIX の品質ゲート G2 は、mutation score の判定を変更したファイルに限定できます（`.jsix-checks.json` の `scope: "changed"`。実装済み）[^jsix-plugin]。
+大規模なモノリスの全体に変異テストをかけるのは、時間の面で現実的でないことが多いと考えます（著者の見解）。変更するモジュールに絞ります。J-SIX の品質ゲート G2 は、mutation score の判定を変更したファイルに限定できます（`.jsix-checks.json` の `scope: "changed"`。実装済み）[^jsix-plugin]。ただし、限定できるのは、ファイル別の内訳を持つ mutation-testing-elements 形式の報告を入力にする場合だけです。スコアだけの最小の形式で `scope: "changed"` を指定すると、ゲートは不合格になります（`plugin/scripts/jsix_mutation_gate.py`）。
 
 ### TDD のゲートとの違い
 
