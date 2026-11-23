@@ -16,7 +16,7 @@ agreed_posting_campaign_term: false
 ---
 
 :::note
-本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の番外編です。シリーズ全体の概要は [#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview)、開発プロセスの移行は [#5 段階的移行](https://zenn.dev/seckeyjp/articles/j-six-05-migration)、コード単位の進め方は [レガシーコード × Claude Code](https://zenn.dev/seckeyjp/articles/j-six-legacy-code) をご覧ください。
+本記事はシリーズ「**J-SIX：Japanese SI Transformation**」の番外編です。シリーズ全体の概要は [#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f)、開発プロセスの移行は [#5 段階的移行](https://qiita.com/SeckeyJP/items/8fe3905cf5a3520cfd8a)、コード単位の進め方は [レガシーコード × Claude Code](https://qiita.com/SeckeyJP/items/5bddfb900b58c0154599) をご覧ください。
 :::
 
 :::note alert
@@ -25,7 +25,7 @@ agreed_posting_campaign_term: false
 
 ## はじめに — 「島」を作る場所が決まらない
 
-J-SIX はこれまで、既存システムへの適用を2つの記事で扱ってきました。[#5 段階的移行](https://zenn.dev/seckeyjp/articles/j-six-05-migration)は開発プロセスを Stage 0 から Stage 3 へ移す話、[レガシーコード × Claude Code](https://zenn.dev/seckeyjp/articles/j-six-legacy-code)は変更したい箇所をテストで囲んで「島」を作る話です。
+J-SIX はこれまで、既存システムへの適用を2つの記事で扱ってきました。[#5 段階的移行](https://qiita.com/SeckeyJP/items/8fe3905cf5a3520cfd8a)は開発プロセスを Stage 0 から Stage 3 へ移す話、[レガシーコード × Claude Code](https://qiita.com/SeckeyJP/items/5bddfb900b58c0154599)は変更したい箇所をテストで囲んで「島」を作る話です。
 
 どちらも、**変更する箇所を選んで囲める**ことを前提にしています。大規模なモノリスでは、この前提が成り立たないことがあります。著者の見解では、Claude Code（以下 CC）を持ち込むときの障害は次の4つです。
 
@@ -233,7 +233,7 @@ L4 はこの記事では扱いません。J-SIX は L4 の条件を、品質ゲ�
 - **カバレッジ**（Java では JaCoCo[^jacoco] など）で、変更する範囲が実行されているかを見る
 - **変異テスト**（Java では PIT[^pit] など）で、コードを意図的に変えたときにテストが落ちるかを見る
 
-J-SIX のサンプルシステムでは、カバレッジ 99% のコードの mutation score が 91.8% で、生き残ったミュータントから本物のテストの穴が見つかりました（J-SIX の既存の実測。[mutation testing の記事](https://zenn.dev/seckeyjp/articles/j-six-mutation-testing)）。カバレッジだけでは十分性は分かりません。
+J-SIX のサンプルシステムでは、カバレッジ 99% のコードの mutation score が 91.8% で、生き残ったミュータントから本物のテストの穴が見つかりました（J-SIX の既存の実測。[mutation testing の記事](https://qiita.com/SeckeyJP/items/b136d6d0bb2d830fb508)）。カバレッジだけでは十分性は分かりません。
 
 大規模なモノリスの全体に変異テストをかけるのは、時間の面で現実的でないことが多いと考えます（著者の見解）。変更するモジュールに絞ります。J-SIX の品質ゲート G2 は、mutation score の判定を変更したファイルに限定できます（`.jsix-checks.json` の `scope: "changed"`。実装済み）[^jsix-plugin]。ただし、限定できるのは、ファイル別の内訳を持つ mutation-testing-elements 形式の報告を入力にする場合だけです。スコアだけの最小の形式で `scope: "changed"` を指定すると、ゲートは不合格になります（`plugin/scripts/jsix_mutation_gate.py`）。
 
@@ -253,7 +253,7 @@ J-SIX の TDD は、受入テスト（hold-out）、Red、Green、Refactor の�
 
 ここは、既存の J-SIX の原則と**向きが逆**になります。先に整理します。
 
-J-SIX は、コード・受入テスト・Spec・ADR から工程成果物（Markdown）を逆生成し、これを正とします。顧客様式の設計書は工程成果物を束ねた「ビュー」で、直接編集しません。Excel や Word への変換物も直接編集しません（Plugin の `plugin/skills/doc-reverse-gen/SKILL.md` の概要と出力ルール5[^jsix-skill]、記事「[設計書逆生成の実装](https://zenn.dev/seckeyjp/articles/j-six-doc-reverse-gen)」の4章と9章）。記事 #5 の Stage 3 も、設計書を「逆生成のみ」としています。
+J-SIX は、コード・受入テスト・Spec・ADR から工程成果物（Markdown）を逆生成し、これを正とします。顧客様式の設計書は工程成果物を束ねた「ビュー」で、直接編集しません。Excel や Word への変換物も直接編集しません（Plugin の `plugin/skills/doc-reverse-gen/SKILL.md` の概要と出力ルール5[^jsix-skill]、記事「[設計書逆生成の実装](https://qiita.com/SeckeyJP/items/62c54852396ac4549462)」の4章と9章）。記事 #5 の Stage 3 も、設計書を「逆生成のみ」としています。
 
 この記事の提案は、**既存の Excel を正本にして、Markdown を派生させ、修正は Excel へ書き戻す**ものです。
 
@@ -441,13 +441,13 @@ https://github.com/SeckeyJP/j-six
 
 | 記事 | 内容 |
 |---|---|
-| [#0 概要編](https://zenn.dev/seckeyjp/articles/j-six-00-overview) | J-SIX の全体像 |
-| [#2 3層ドキュメント戦略](https://zenn.dev/seckeyjp/articles/j-six-02-3layer-doc) | 設計書を逆生成する考え方 |
-| [#5 段階的移行](https://zenn.dev/seckeyjp/articles/j-six-05-migration) | 開発プロセスの移行（Stage 0〜3） |
-| [レガシーコード × Claude Code](https://zenn.dev/seckeyjp/articles/j-six-legacy-code) | 特性化テストで安全に改修する |
-| [設計書逆生成の実装](https://zenn.dev/seckeyjp/articles/j-six-doc-reverse-gen) | 工程成果物の逆生成と組立 |
-| [4層品質ゲート](https://zenn.dev/seckeyjp/articles/j-six-quality-gates) | G1〜G4 の設計 |
-| [mutation testing の実測](https://zenn.dev/seckeyjp/articles/j-six-mutation-testing) | カバレッジ 99% と mutation score |
+| [#0 概要編](https://qiita.com/SeckeyJP/items/e4726bbbbf4d7949ab0f) | J-SIX の全体像 |
+| [#2 3層ドキュメント戦略](https://qiita.com/SeckeyJP/items/8f413ed405ae0398f94c) | 設計書を逆生成する考え方 |
+| [#5 段階的移行](https://qiita.com/SeckeyJP/items/8fe3905cf5a3520cfd8a) | 開発プロセスの移行（Stage 0〜3） |
+| [レガシーコード × Claude Code](https://qiita.com/SeckeyJP/items/5bddfb900b58c0154599) | 特性化テストで安全に改修する |
+| [設計書逆生成の実装](https://qiita.com/SeckeyJP/items/62c54852396ac4549462) | 工程成果物の逆生成と組立 |
+| [4層品質ゲート](https://qiita.com/SeckeyJP/items/735cf0618ae9e98c4c9e) | G1〜G4 の設計 |
+| [mutation testing の実測](https://qiita.com/SeckeyJP/items/b136d6d0bb2d830fb508) | カバレッジ 99% と mutation score |
 
 ## 参考文献
 
