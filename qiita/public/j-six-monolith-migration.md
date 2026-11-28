@@ -1,15 +1,18 @@
 ---
 title: 巨大モノリスを AI が扱える形にする — モジュラーモノリスへの段階的移行と Excel 設計書の取り込み【構想】
-private: false
 tags:
   - j-six
-  - claudecode
+  - ClaudeCode
   - ai-development
-  - si
-updated_at: '2026-11-23T19:27:22+09:00'
+  - SI
+private: false
+updated_at: '2026-11-28T20:16:50+09:00'
 id: 392be99d1631f6b28986
 organization_url_name: null
 slide: false
+ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 :::note
